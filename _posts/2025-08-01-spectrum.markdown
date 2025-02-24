@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Spectrum: Learning 3D Texture-Aware Representations for Parsing Diverse Human Clothing and Body Parts"
+date:   2025-08-01 00:00:00 +00:00
+image: /images/spectrum.gif
+categories: research
+author: 
+authors: "<strong>Kiran Chhatre</strong>, <a href=\"https://www.kth.se/profile/chpeters\">Christopher Peters</a>, <a href=\"https://karanams.github.io/\">Srikrishna Karanam</a>"
+venue: "arXiv Preprint"
+arxiv: https://arxiv.org/abs/2508.06032
+website: https://s-pectrum.github.io/
+---
+Spectrum introduces a novel repurposing of an Image-to-Texture diffusion model for improved alignment with body parts and clothing, enabling detailed human parsing that handles diverse clothing types and complex poses across any number of humans in the scene.

@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Rethinking Computer-Aided Architectural Design (CAAD) – From Generative Algorithms and Architectural Intelligence to Environmental Design and Ambient Intelligence"
+date:   2021-06-01 00:00:00 +00:00
+image: /images/caad.png
+categories: research
+author: 
+authors: "<a href=\"https://www.kth.se/profile/todor\">Todor Stojanovski</a>, Hui Zhang, <a href=\"https://emmenru.github.io/\">Emma Frid</a>, <strong>Kiran Chhatre</strong>, <a href=\"https://www.kth.se/profile/chpeters\">Christopher Peters</a>, <a href=\"https://www.birmingham.ac.uk/staff/profiles/gees/samuels-ivor\">Ivor Samuels</a>, <a href=\"https://www.qut.edu.au/about/our-people/academic-profiles/ps.sanders\">Paul Sanders</a>, <a href=\"https://taltech.ee/en/contacts/jenni-vilhelmiina-partanen\">Jenni Partanen</a>, <a href=\"https://phd.uniroma1.it/web/DEBORAH-CHIARA-LEFOSSE_nT1053824_EN.aspx\">Deborah Lefosse</a>"
+venue: "Springer Nature International Conference on Computer-Aided Architectural Design Futures (CAAD Futures)"
+paper: https://link.springer.com/chapter/10.1007/978-981-19-1280-1_5
+---
+This paper reviews the evolution of CAAD—from generative algorithms and BIM to current AI developments—and argues that integrating AI-driven ambient intelligence into digital design tools can transform architectural and urban design for smarter, more sustainable cities.
