@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "AMUSE: Emotional Speech-driven 3D Body Animation via Disentangled Latent Diffusion"
+date:   2024-06-01 00:00:00 +00:00
+image: /images/amuse.gif
+categories: research
+author: 
+authors: "<strong>Kiran Chhatre</strong>, <a href=\"https://ps.is.tuebingen.mpg.de/person/rdanecek\">Radek Daněček</a>, <a href=\"https://ps.is.mpg.de/person/nathanasiou\">Nikos Athanasiou</a>, <a href=\"https://ps.is.mpg.de/person/gbecherini\">Giorgio Becherini</a>, <a href=\"https://www.kth.se/profile/chpeters\">Christopher Peters</a>, <a href=\"https://ps.is.tuebingen.mpg.de/person/black\">Michael J. Black</a>, <a href=\"https://sites.google.com/site/bolkartt\">Timo Bolkart</a>"
+venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+arxiv: https://arxiv.org/abs/2312.04466
+youtube: https://www.youtube.com/watch?v=gsEt9qtR1jk&ab_channel=MichaelBlack
+poster: https://drive.google.com/file/d/1-FRWKlW9fr5y-lrija4E12gnm_A13MzN/view
+code: https://github.com/kiranchhatre/amuse
+website: https://amuse.is.tue.mpg.de/
+x: https://x.com/ChhatreKiran/status/1802424251875500438
+---
+AMUSE generates realistic emotional 3D body gestures directly from a speech sequence. It provides user control over the generated emotion by combining the driving speech with a different emotional audio.

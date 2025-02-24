@@ -4,8 +4,39 @@ _site
 .jekyll-metadata
 .bundle
 .sass-cache
-Gemfile
 Gemfile.lock
 node_modules
 package.json
 favicon.ico
+
+# Local development files
+vendor/
+.jekyll-cache/
+.ruby-version
+.rbenv-version
+LOCAL_DEVELOPMENT.md
+
+# Scripts folder
+scripts/
+
+# Virtual environment
+venv/
+
+# Python temporary files and scripts
+*.py
+__pycache__/
+*.pyc
+
+# Development and working files
+*.tmp
+*.swp
+*.swo
+*~
+*.log
+.ruby-version
+Gemfile.lock
+LOCAL_DEVELOPMENT.md
+start-dev-server.sh
+
+# Build outputs that shouldn't be committed
+_site/

@@ -3,33 +3,37 @@
 
 <head>
 
-  <!-- # Old Google Analytics
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script>
+  <!-- Google tag (gtag.js) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-L831GRY83T"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-E00L9PT3V9');
-  </script> 
-  -->
+    gtag('config', 'G-L831GRY83T');
+  </script> -->
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M2HCFJDV"></script>
+   <!-- Matomo -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'GTM-M2HCFJDV');
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['setUserId', 'USER_ID_HERE']);
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['trackAllContentImpressions']);
+    _paq.push(['enableLinkTracking']);
+    // Change how long a tab needs to be active to be counted as viewed in seconds/
+    // Requires a page to be actively viewed for 30 seconds for any heart beat request to be sent.
+    _paq.push(['enableHeartBeatTimer', 30]);
+    (function() {
+      var u="https://chhatrekiran.matomo.cloud/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src='https://cdn.matomo.cloud/chhatrekiran.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
   </script>
+  <!-- End Matomo Code -->
 
-  <!-- New Google Tag Manager -->
-  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-M2HCFJDV');</script> -->
-  <!-- End Google Tag Manager -->
 
 
   <title>{{ site.name }}</title>
@@ -42,6 +46,391 @@
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="icon" href="../favi.ico" type="image/x-icon">
+
+  <style>
+    .bibtex-toggle-btn {
+      background: none;
+      border: none;
+      color: #1772d0;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: inherit;
+      font-family: inherit;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .bibtex-toggle-btn:hover {
+      text-decoration: underline;
+    }
+    
+    .bibtex {
+      background-color: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 5px;
+      padding: 10px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.7rem;
+      overflow: auto;
+      white-space: pre;
+      line-height: 1.2;
+      max-height: 150px;
+      width: 100%;
+      max-width: 450px;
+      height: 150px;
+      box-sizing: border-box;
+      margin: 8px 0 0 0;
+      position: relative;
+    }
+    
+    .bibtex-container {
+      width: 100%;
+      max-width: 450px;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .copy-btn {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      background-color: #0056cc;
+    }
+    
+    .category-filter-container {
+      text-align: center;
+      margin: 25px 0;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+    }
+    
+    .category-filter-btn {
+      background: none;
+      border: none;
+      color: #1772d0;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: inherit;
+      font-family: inherit;
+      padding: 2px 4px;
+      margin: 0 1px;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+    }
+    
+    .category-filter-btn:hover {
+      text-decoration: underline;
+      background-color: rgba(23, 114, 208, 0.05);
+    }
+    
+    .category-filter-btn.active {
+      font-weight: bold;
+      color: #333;
+      background-color: rgba(23, 114, 208, 0.08);
+    }
+    
+    .paper-tag {
+      display: inline-block;
+      background-color: #e8e8e8;
+      color: #555;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    
+    .paper-tag.oral {
+      background-color: #d4e6d4;
+      color: #2d5016;
+    }
+    
+    .paper-tag.journal {
+      background-color: #d1e7dd;
+      color: #0f5132;
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      margin: 30px 0;
+      padding: 20px;
+      flex-wrap: nowrap;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    
+    .logo-item {
+      height: 50px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain;
+      filter: grayscale(30%);
+      transition: filter 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .logo-item:hover {
+      filter: grayscale(0%);
+    }
+    
+    .logo-item.sony-small {
+      height: 25px;
+      max-width: 70px;
+    }
+    
+    .logo-item.kth-large {
+      height: 60px;
+      max-width: 140px;
+    }
+    
+    .logo-item.small {
+      height: 40px;
+      max-width: 100px;
+    }
+  </style>
+
+  <script>
+    function toggleBibtex(id) {
+      var bibtex = document.getElementById(id);
+      var copyBtn = document.getElementById('copy-' + id.replace('bibtex-', ''));
+      
+      if (bibtex.style.display === 'none') {
+        bibtex.style.display = 'block';
+        if (copyBtn) copyBtn.style.display = 'inline-block';
+      } else {
+        bibtex.style.display = 'none';
+        if (copyBtn) copyBtn.style.display = 'none';
+      }
+    }
+    
+    function testCopy() {
+      var testText = '@article{test2025, title={Test}, author={Test Author}, year={2025}}';
+      var textArea = document.createElement('textarea');
+      textArea.value = testText;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        var success = document.execCommand('copy');
+        console.log('Test copy success:', success);
+        alert('Test copy ' + (success ? 'succeeded' : 'failed'));
+      } catch (err) {
+        console.error('Test copy failed:', err);
+        alert('Test copy failed: ' + err.message);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+    
+    function copyBibtex(id, button) {
+      console.log('Copy button clicked for:', id);
+      
+      // Get the text directly from the button's data attribute
+      var bibtexText = button.getAttribute('data-bibtex');
+      
+      if (!bibtexText) {
+        // Fallback to getting from the element
+        var bibtexElement = document.getElementById(id);
+        if (!bibtexElement) {
+          console.error('BibTeX element not found:', id);
+          button.textContent = 'Element not found';
+          button.style.backgroundColor = '#dc3545';
+          setTimeout(function() {
+            button.textContent = 'Copy BibTeX';
+            button.style.backgroundColor = '#007aff';
+          }, 2000);
+          return;
+        }
+        bibtexText = bibtexElement.textContent || bibtexElement.innerText;
+      }
+      
+      console.log('Raw BibTeX text length:', bibtexText ? bibtexText.length : 0);
+      console.log('BibTeX text preview:', bibtexText ? bibtexText.substring(0, 100) + '...' : 'empty');
+      
+      bibtexText = bibtexText.trim();
+      
+      if (!bibtexText) {
+        console.error('No BibTeX text found after trimming');
+        button.textContent = 'No text found';
+        button.style.backgroundColor = '#dc3545';
+        setTimeout(function() {
+          button.textContent = 'Copy BibTeX';
+          button.style.backgroundColor = '#007aff';
+        }, 2000);
+        return;
+      }
+      
+      console.log('Final BibTeX text to copy:', bibtexText.substring(0, 100) + '...');
+      
+      // Simple copy using textarea method (most reliable)
+      var textArea = document.createElement('textarea');
+      textArea.value = bibtexText;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        var success = document.execCommand('copy');
+        console.log('Copy success:', success);
+        
+        if (success) {
+          var originalText = button.textContent;
+          button.textContent = 'Copied!';
+          button.style.backgroundColor = '#28a745';
+          setTimeout(function() {
+            button.textContent = originalText;
+            button.style.backgroundColor = '#007aff';
+          }, 2000);
+        } else {
+          throw new Error('execCommand returned false');
+        }
+      } catch (err) {
+        console.error('Copy failed:', err);
+        
+        // Try modern clipboard API as fallback
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(bibtexText).then(function() {
+            console.log('Modern clipboard API succeeded');
+            var originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.style.backgroundColor = '#28a745';
+            setTimeout(function() {
+              button.textContent = originalText;
+              button.style.backgroundColor = '#007aff';
+            }, 2000);
+          }).catch(function(clipboardErr) {
+            console.error('Both copy methods failed:', err, clipboardErr);
+            button.textContent = 'Copy failed';
+            button.style.backgroundColor = '#dc3545';
+            setTimeout(function() {
+              button.textContent = 'Copy BibTeX';
+              button.style.backgroundColor = '#007aff';
+            }, 2000);
+          });
+        } else {
+          button.textContent = 'Copy failed';
+          button.style.backgroundColor = '#dc3545';
+          setTimeout(function() {
+            button.textContent = 'Copy BibTeX';
+            button.style.backgroundColor = '#007aff';
+          }, 2000);
+        }
+      }
+      
+      document.body.removeChild(textArea);
+    }
+    
+    function filterProjects(category) {
+      try {
+        // Define project categories with partial title matches
+        var categories = {
+          'all': [],
+          '3d-humans': ['AMUSE:', 'EMOTE:', 'Spatio-temporal'],
+          'hci': ['Synthetically Expressive:', 'Evaluation of Generative Models'],
+          'vlm': ['Spectrum:', 'Audiopedia:'],
+          'speech': ['AMUSE:', 'Audiopedia:'],
+          'other': ['Computer-Aided', 'BEAMBayesOpt:', 'Rethinking Computer-Aided']
+        };
+        
+        // Get research project rows more specifically
+        var projectRows = [];
+        
+        // Look for the table that contains research projects (has Jekyll loop content)
+        var allTables = document.querySelectorAll('table');
+        
+        // Find the table that contains research projects by looking for project images
+        var researchTable = null;
+        allTables.forEach(function(table, index) {
+          var projectImages = table.querySelectorAll('img[alt="project image"]');
+          if (projectImages.length > 0) {
+            researchTable = table;
+          }
+        });
+        
+        if (researchTable) {
+          var rows = researchTable.querySelectorAll('tr');
+          rows.forEach(function(row) {
+            // Only include rows that have both an image and an h3 (research project structure)
+            if (row.querySelector('h3') && row.querySelector('img[alt="project image"]')) {
+              projectRows.push(row);
+            }
+          });
+        }
+        
+        // Update button states
+        var buttons = document.querySelectorAll('.category-filter-btn');
+        buttons.forEach(function(btn) {
+          btn.classList.remove('active');
+        });
+        
+        var activeButton = document.getElementById('filter-' + category);
+        if (activeButton) {
+          activeButton.classList.add('active');
+        }
+        
+        // Show/hide projects based on category
+        projectRows.forEach(function(row) {
+          var titleElement = row.querySelector('h3');
+          if (titleElement) {
+            var title = titleElement.textContent.trim();
+            var shouldShow = false;
+            
+            if (category === 'all') {
+              shouldShow = true;
+            } else {
+              var categoryProjects = categories[category];
+              if (categoryProjects && categoryProjects.length > 0) {
+                shouldShow = categoryProjects.some(function(projectName) {
+                  return title.includes(projectName);
+                });
+              }
+            }
+            
+            row.style.display = shouldShow ? '' : 'none';
+          }
+        });
+      } catch (error) {
+        console.error('Error in filterProjects:', error);
+      }
+    }
+    
+    // Initialize with 'all' category active
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        var allButton = document.getElementById('filter-all');
+        if (allButton) {
+          allButton.classList.add('active');
+        }
+      } catch (error) {
+        console.error('Error initializing filters:', error);
+      }
+    });
+  </script>
 
 </head>
 
@@ -58,37 +447,100 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr style="padding:0px">
             <td style="padding:2.5%;width:60%;vertical-align:middle">
-              <h1>
-                Leonid Keselman
+              <h1 style="font-size: 3.2em; font-family: 'Georgia', 'Times New Roman', 'Times', serif; font-weight: 500; color: #000000; letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 0.5em; text-rendering: optimizeLegibility; font-variant-ligatures: common-ligatures;">
+                Kiran Chhatre
+                <button onclick="document.getElementById('nameAudio').play()" style="background:none;border:none;cursor:pointer;">
+                  <img src="../media/audio.png" alt="Play pronunciation" style="width:15px;height:15px;vertical-align:middle;">
+                </button>
+                <audio id="nameAudio" src="../media/name.mp3"></audio>
               </h1>
-              <p>I am a PhD student at the <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, part of the <a href="https://www.scs.cmu.edu/">School of Computer Science</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, where I work on 3D computer vision. My PhD advisor is <a href="http://www.cs.cmu.edu/~hebert/">Martial Hebert</a>.
+              <p style="text-align: justify;">
+                I am an <a href="https://www.clipe-itn.eu/">MSCA ITN PhD fellow</a> at the <a href="https://www.kth.se/en">KTH Royal Institute of Technology</a> (2021.01 – Present), where I am advised by <a href="https://www.kth.se/profile/chpeters">Christopher Peters</a>. During my PhD, I have had the opportunity to work closely with <a href="https://ps.is.mpg.de/person/black">Michael J. Black</a>, <a href="https://sites.google.com/site/bolkartt/">Timo Bolkart</a>, <a href="https://research.adobe.com/person/srikrishna-karanam/">Srikrishna Karanam</a>, and <a href="https://en.wikipedia.org/wiki/Jun_Rekimoto">Jun Rekimoto</a>. I have also gained valuable experience as a PhD intern at <a href="https://research.adobe.com/">Adobe Research</a>, <a href="https://www.sonycsl.co.jp/en/">Sony Computer Science Laboratories</a>, the <a href="https://ps.is.mpg.de/">Max Planck Institute for Intelligent Systems (Perceiving Systems)</a>, <a href="https://www.ea.com/seed">Electronic Arts (SEED)</a>, and <a href="https://www.ubisoft.com/en-us/studio/laforge">Ubisoft La Forge</a>. 
               </p>
-              <p>
-                From 2011 to 2017, I worked at <a href="https://www.intel.com">Intel</a>, as part of <a href="https://www.intelrealsense.com/">Intel RealSense</a>. I primarily designed computer vision algorithms for efficient hardware ASICs, including the Intel RealSense <a href="https://software.intel.com/en-us/articles/realsense-r200-camera">R200</a> and <a href="https://software.intel.com/en-us/realsense/d400">D400</a> RGB-D sensors. Additionally, I worked on <a href="https://github.com/IntelRealSense/librealsense">software APIs</a>, <a href="https://patents.google.com/patent/US9992474B2">active illumination systems</a>, <a href="https://patents.google.com/patent/US9304597">human-computer interaction devices</a>, and helped develop demos for trade shows, including CES 2012-2016.
-              </p>
-              <p>
-                I have an MS in Computer Science (AI focus) from <a href="http://cs.stanford.edu">Stanford University</a>, where I was a research assistant for <a href="http://svl.stanford.edu/">Silvio Savarese</a> and a teaching assistant for <a href="http://svl.stanford.edu/">Fei-Fei Li</a> (<a href="http://vision.stanford.edu/teaching/cs131_fall1617/">CS131</a> & <a href="http://cs231n.stanford.edu/2017/">CS231N</a>). I have a BS in EECS from <a href="http://www.eecs.berkeley.edu/">UC Berkeley</a>, where I worked in <a href="https://people.eecs.berkeley.edu/~pister/">Kris Pister's</a> lab.
+              <p style="text-align: justify;">
+                Prior to my PhD, I worked as a Research Affiliate with the <a href="https://transportation.lbl.gov/beam">BEAM team</a> at <a href="https://www.lbl.gov/">Lawrence Berkeley National Laboratory</a>. I earned my <a href="https://www.academy.rwth-aachen.de/en/programs/masters-degree-programs/detail/msc-computer-aided-conception-and-production-in-mechanical-engineering">Master’s degree in Mechanical Engineering</a> from <a href="https://www.rwth-aachen.de/">RWTH Aachen University</a> (2017.09 – 2020.10), where I was advised by <a href="https://www.km.rwth-aachen.de/cms/KM/Das-Lehr-und-Forschungsgebiet/Team/Leitung/~qpvr/Mikhail-Itskov/lidx/1/">Mikhail Itskov</a>. During my master’s studies, I interned with <a href="https://research.ibm.com/">IBM Research</a>, <a href="https://www.3ds.com/products/simulia">Dassault Systèmes (SIMULIA)</a>, and the <a href="https://www.mckinsey.com/capabilities/operations/how-we-help-clients/innovation-and-learning-centers/our-centers/aachen">Innovation & Learning Center Aachen</a>. Before that, I worked at <a href="https://www.3ds.com/">Dassault Systèmes Solutions Lab</a> and <a href="https://www.autocoptrackpro.com/">Autocop Telematics</a>, and I completed my <a href="https://www.coeptech.ac.in/academics/schools/school-of-engineering-and-technology/school-of-mechanical-and-materials-engineering/">Bachelor’s degree in Mechanical Engineering</a> at <a href="https://www.coeptech.ac.in/">COEP Technological University</a> (2010.07 – 2014.05).
               </p>
               <p style="text-align:center">
-                <a target="_blank" href="https://mailhide.io/e/B8TyS"> Email</a> &nbsp;/&nbsp;
-                <a href="https://github.com/leonidk">GitHub</a> &nbsp;/&nbsp;
-                <a href="https://scholar.google.com/citations?user=GCYG4GoAAAAJ">Google Scholar</a> &nbsp;/&nbsp;
-                <a href="https://www.linkedin.com/in/lkeselman"> LinkedIn </a>
+                <script type="text/javascript">
+                  function writeObfuscatedEmail() {
+                    var emailParts = ["x63", "x68", "x68", "x61", "116", "114", "101", "x40", "x6b", "116", "x68", "x2e", "x73", "101"];
+                    var displayText = ["69", "109", "97", "105", "108"];
+                    var emailLink = "<a href=\"&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;";
+                    for (var i = 0; i < emailParts.length; i++) {
+                      emailLink += "&#" + emailParts[i] + ";";
+                    }
+                    emailLink += "\">";
+                    for (var i = 0; i < displayText.length; i++) {
+                      emailLink += "&#" + displayText[i] + ";";
+                    }
+                    emailLink += "</a>";
+                    document.write(emailLink);
+                  }
+                  writeObfuscatedEmail();
+                </script>
+                &nbsp;/&nbsp;
+                <a href="../pdfs/Kiran_Chhatre_CV.pdf" target="_blank">CV</a> &nbsp;/&nbsp;
+                <a href="https://scholar.google.com/citations?user=MBKzL6kAAAAJ">Scholar</a> &nbsp;/&nbsp;
+                <a href="https://www.linkedin.com/in/kiranchhatre/"> LinkedIn </a> &nbsp;/&nbsp;
+                <a href="https://github.com/kiranchhatre">GitHub</a> &nbsp;/&nbsp;
+                <a href="https://x.com/ChhatreKiran"> X</a> &nbsp;/&nbsp;
+                <a href="https://bsky.app/profile/kiranchhatre.bsky.social"> Bluesky </a>
+
               </p>
             </td>
             <td style="padding:2.5%;width:40%;max-width:40%">
-              <img style="width:100%;max-width:100%" alt="profile photo" src="images/circle_bw_crop.jpg">
+              <img style="width:100%;max-width:100%" alt="profile photo" src="../images/dp.png">
             </td>
           </tr>
         </table>
+
+        <!-- Logos Section -->
+        
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <div class="logo-container">
+                <img src="/tn/logos/kth_logo.png" alt="KTH Royal Institute of Technology" class="logo-item kth-large" />
+                <img src="/tn/logos/mpi_logo.png" alt="Max Planck Institute for Intelligent Systems" class="logo-item" />
+                <img src="/tn/logos/rwth-logo-png-transparent.png" alt="RWTH Aachen University" class="logo-item" />
+                <img src="/tn/logos/adobe_logo.png" alt="Adobe Research" class="logo-item" />
+                <img src="/tn/logos/Sony_logo.svg.png" alt="Sony Computer Science Laboratories" class="logo-item sony-small" />
+                <img src="/tn/logos/ea_logo.svg" alt="Electronic Arts SEED" class="logo-item small" />
+                <img src="/tn/logos/ubisoft_logo.png" alt="Ubisoft La Forge" class="logo-item small" />
+                <img src="/tn/logos/ibm_logo.jpg" alt="IBM Research" class="logo-item small" />
+                <img src="/tn/logos/berkeley_logo.jpg" alt="Lawrence Berkeley National Laboratory" class="logo-item" />
+              </div>
+            </td>
+          </tr>
+        </table>
+        
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Research</h2>
-              <p>
-                I'm interested in computer vision, machine learning, optimization, graphics and robotics.
+              <p style="text-align: justify;">
+                My research lies at the intersection of computer vision and machine learning. I am particularly focused on the controllability of generative models across various modalities (image, video, 3D, 4D). I have broadly worked on visual grounding and audio reasoning of Multimodal Large Language Models (MLLMs). I have also worked on emotional 3D animation of virtual humans, with applications in VR-based human–computer interaction (HCI). Previously, I explored Bayesian optimization for multi-agent systems, robotic systems, and computer-aided engineering (CAE).
               </p>
+              
+              <p>
+                ▸ Currently at <a href="https://research.adobe.com/">Adobe Research London</a> with <a href="https://paulguerrero.net/">Paul</a>, <a href="https://paulchhuang.wixsite.com/chhuang">Chun-Hao</a>, <a href="https://yulia.gryaditskaya.com/">Yulia</a>, and <a href="https://hyeonho99.github.io/">Hyeonho</a>, working on video foundation models.
+              </p>
+              
+              <!-- Category Filter Buttons -->
+              <div style="margin: 15px 0; text-align: center;">
+                <button class="category-filter-btn" onclick="filterProjects('all')" id="filter-all">all</button> /
+                <button class="category-filter-btn" onclick="filterProjects('vlm')" id="filter-vlm">MLLM</button> /
+                <button class="category-filter-btn" onclick="filterProjects('3d-humans')" id="filter-3d-humans">3D humans</button> /
+                <button class="category-filter-btn" onclick="filterProjects('speech')" id="filter-speech">speech</button> /
+                <button class="category-filter-btn" onclick="filterProjects('hci')" id="filter-hci">HCI</button> /
+                <button class="category-filter-btn" onclick="filterProjects('other')" id="filter-other">other</button>
+              </div>
+              
+              <!-- <p>I am open to job market for full time positions in late 2025.</p> -->
+              
+              
+              
             </td>
           </tr>
         </table>
@@ -98,98 +550,49 @@
           {% for cat in post.categories %}
           {% if cat == 'research' %}
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+            <td style="padding:2.5%;width:25%;vertical-align:top;min-width:120px">
               <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
+            <td style="padding:2.5%;width:75%;vertical-align:top">
+              <h3>{{post.title}}{% if post.title contains "Audiopedia" %}<span class="paper-tag oral">oral</span>{% elsif post.title contains "Evaluation of Generative Models" %}<span class="paper-tag journal">journal</span>{% elsif post.title contains "BEAMBayesOpt" %}<span class="paper-tag journal">special mentions</span>{% endif %}</h3>
               <br>
               {{post.authors}}
 
               <br>
               <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
+              {% if post.frontiers_paper %}
+              <a href="{{post.frontiers_paper}}">frontiers paper</a> /
+              {% endif %}
+              {% if post.i3d_paper %}
+              <a href="{{post.i3d_paper}}">i3d workshop</a> /
+              {% endif %}
+              {% if post.paper %}
+              <a href="{{post.paper}}">paper</a> /
+              {% endif %}
               {% if post.arxiv %}
               <a href="{{post.arxiv}}">arxiv</a> /
               {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">code</a> /
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">poster</a> /
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> /
+              {% if post.paper2 %}
+              <a href="{{post.paper2}}">paper #2</a> /
               {% endif %}
               {% if post.website %}
               <a href="{{post.website}}">website</a> /
+              {% endif %}
+              {% if post.video %}
+              <a href="{{post.video}}">video</a> /
               {% endif %}
               {% if post.youtube %}
               <a href="{{post.youtube}}">youtube</a> /
               {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table>
-        <br>
-        <br>
-        <br>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Intel Projects</h2>
-              <p>Besides my work on the RealSense depth sensors and the publications above, a sampling of my publicly disclosed work
-              </p>
-            </td>
-          </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'Intel' %}
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
-              <br>
-              <em>{{post.categories}} {{post.course}}</em>
-              <br>
-              {{ post.date | date: "%Y-%m-%d" }}
-
-              <br>
-              {% if post.website %}
-              <a href="{{post.website}}">website</a> /
-              {% endif %}
-              {% if post.paper %}
-              <a href="{{post.paper}}">paper</a> /
-              {% endif %}
-              {% if post.patent %}
-              <a href="{{post.patent}}">patent</a> /
-              {% endif %}
-              {% if post.patent2 %}
-              <a href="{{post.patent2}}">patent #2</a> /
-              {% endif %}
-              {% if post.patent3 %}
-              <a href="{{post.patent3}}">patent #3</a> /
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
-              {% endif %}
-              {% if post.video2 %}
-              <a href="{{post.video2}}">video #2</a> /
+              {% if post.supp %}
+              <a href="{{post.supp}}">supp. material</a> /
               {% endif %}
               {% if post.code %}
               <a href="{{post.code}}">code</a> /
+              {% endif %}
+              {% if post.code2 %}
+              <a href="{{post.code2}}">BEAM-integration</a> /
               {% endif %}
               {% if post.poster %}
               <a href="{{post.poster}}">poster</a> /
@@ -197,6 +600,96 @@
               {% if post.slides %}
               <a href="{{post.slides}}">slides</a> /
               {% endif %}
+              {% if post.x %}
+              <a href="{{post.x}}">x thread</a> /
+              {% endif %}
+              {% if post.title contains "Spectrum" %}
+              <a href="https://patents.google.com/">patent</a> /
+              {% endif %}
+              <button class="bibtex-toggle-btn" onclick="toggleBibtex('bibtex-{{post.title | slugify}}')">BibTeX</button>
+              <div class="bibtex-container">
+                <pre class="bibtex" id="bibtex-{{post.title | slugify}}" style="display: none;">{% if post.title contains "Audiopedia" %}@INPROCEEDINGS{10889814,
+  author={Penamakuri, Abhirama Subramanyam and Chhatre, Kiran and Jain, Akshat},
+  booktitle={ICASSP 2025 - 2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)}, 
+  title={Audiopedia: Audio QA with Knowledge}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-5},
+  keywords={Adaptation models;Benchmark testing;Signal processing;Question answering (information retrieval);Cognition;Acoustics;Speech processing;audio question answering;knowledge-intensive questions;audio entity linking},
+  doi={10.1109/ICASSP49660.2025.10889814}}{% elsif post.title contains "Spectrum" %}@misc{chhatre2025learning3dtextureawarerepresentations,
+      title={Learning {3D} Texture-Aware Representations for Parsing Diverse Human Clothing and Body Parts}, 
+      author={Kiran Chhatre and Christopher Peters and Srikrishna Karanam},
+      year={2025},
+      eprint={2508.06032},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2508.06032}, 
+}{% elsif post.title contains "Synthetically Expressive" %}@article{du2025synthetically,
+  title={Synthetically Expressive: Evaluating gesture and voice for emotion and empathy in VR and 2D scenarios},
+  author={Du, Haoyang and Chhatre, Kiran and Peters, Christopher and Keegan, Brian and McDonnell, Rachel and Ennis, Cathy},
+  journal={arXiv preprint arXiv:2506.23777},
+  year={2025}
+}{% elsif post.title contains "Evaluation of Generative Models" %}@article{chhatre2025evaluation,
+  title={Evaluation of Generative Models for Emotional 3D Animation Generation in VR},
+  author={Chhatre, Kiran and Guarese, Renan and Matviienko, Andrii and Peters, Christopher Edward},
+  journal={Frontiers in Computer Science},
+  volume={7},
+  pages={1598099},
+  year={2025},
+  publisher={Frontiers}
+}
+
+@inproceedings{chhatre2025evaluating,
+  title={Evaluating Speech and Video Models for Face-Body Congruence},
+  author={Chhatre, Kiran and Guarese, Renan and Matviienko, Andrii and Peters, Christopher},
+  booktitle={Companion Proceedings of the ACM SIGGRAPH Symposium on Interactive 3D Graphics and Games},
+  pages={1--3},
+  year={2025}
+}{% elsif post.title contains "AMUSE" %}@InProceedings{Chhatre_2024_CVPR,
+    author    = {Chhatre, Kiran and Daněček, Radek and Athanasiou, Nikos and Becherini, Giorgio and Peters, Christopher and Black, Michael J. and Bolkart, Timo},
+    title     = {AMUSE: Emotional Speech-driven 3D Body Animation via Disentangled Latent Diffusion},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2024},
+    pages     = {1942-1953},
+    url = {https://amuse.is.tue.mpg.de},
+}{% elsif post.title contains "EMOTE" %}@inproceedings{10.1145/3610548.3618183,
+author = {Dan\v{e}\v{c}ek, Radek and Chhatre, Kiran and Tripathi, Shashank and Wen, Yandong and Black, Michael and Bolkart, Timo},
+title = {Emotional Speech-Driven Animation with Content-Emotion Disentanglement},
+year = {2023},
+isbn = {9798400703157},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3610548.3618183},
+doi = {10.1145/3610548.3618183},
+booktitle = {SIGGRAPH Asia 2023 Conference Papers},
+articleno = {41},
+numpages = {13},
+keywords = {Computer Graphics, Computer Vision, Deep learning, Facial Animation, Speech-driven Animation},
+location = {Sydney, NSW, Australia},
+series = {SA '23}
+}{% elsif post.title contains "Spatio-temporal" %}@article{deichler2021spatio,
+  title={Spatio-temporal priors in 3D human motion},
+  author={Deichler, Anna and Chhatre, Kiran and Peters, Christopher and Beskow, Jonas},
+  year={2021}
+}{% elsif post.title contains "BEAMBayesOpt" or post.title contains "Parallel Bayesian" %}@inproceedings{chhatre2022parallel,
+  title={Parallel Bayesian Optimization of Agent-Based Transportation Simulation},
+  author={Chhatre, Kiran and Feygin, Sidney and Sheppard, Colin and Waraich, Rashid},
+  booktitle={International Conference on Machine Learning, Optimization, and Data Science},
+  pages={470--484},
+  year={2022},
+  organization={Springer}
+}{% elsif post.title contains "CAAD" or post.title contains "Computer-Aided" or post.title contains "computer-aided" %}@inproceedings{stojanovski2021rethinking,
+  title={Rethinking computer-aided architectural design (CAAD)--from generative algorithms and architectural intelligence to environmental design and ambient intelligence},
+  author={Stojanovski, Todor and Zhang, Hui and Frid, Emma and Chhatre, Kiran and Peters, Christopher and Samuels, Ivor and Sanders, Paul and Partanen, Jenni and Lefosse, Deborah},
+  booktitle={International Conference on Computer-Aided Architectural Design Futures},
+  pages={62--83},
+  year={2021},
+  organization={Springer}
+}{% endif %}</pre>
+                <button class="copy-btn" onclick="copyBibtex('bibtex-{{post.title | slugify}}', this)" style="display: none;" id="copy-{{post.title | slugify}}">Copy BibTeX</button>
+              </div>
               <p></p>
               {{ post.excerpt }}
             </td>
@@ -208,77 +701,48 @@
         <br>
         <br>
         <br>
+        
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Other Projects</h2>
-              <p> These include coursework, side projects and unpublished research work. 
+              <h2>Academic Services</h2>
+              <p>
+                <strong>Conference Reviewer:</strong> NeurIPS, ICLR, AAAI, ICCV, SIGGRAPH, SIGGRAPH Asia, ISMAR, CoG, IVA <br />
+                <strong>Journal Reviewer:</strong> Pattern Recognition, IEEE Transactions on Affective Computing <br />
+                <strong>Program Committee:</strong> <a href="https://eg2024.cyens.org.cy/workshops/">CLIPE Workshop at Eurographics 2024</a>
               </p>
             </td>
           </tr>
         </table>
+
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat != 'research' and cat != 'Intel' %}
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
-              <br>
-              <em>{{post.categories}} {{post.course}}</em>
-              <br>
-              {{ post.date | date: "%Y-%m-%d" }}
-
-              <br>
-              {% if post.website %}
-              <a href="{{post.website}}">website</a> /
-              {% endif %}
-              {% if post.paper %}
-              <a href="{{post.paper}}">paper</a> /
-              {% endif %}
-              {% if post.patent %}
-              <a href="{{post.patent}}">patent</a> /
-              {% endif %}
-              {% if post.patent2 %}
-              <a href="{{post.patent2}}">patent #2</a> /
-              {% endif %}
-              {% if post.patent3 %}
-              <a href="{{post.patent3}}">patent #3</a> /
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
-              {% endif %}
-              {% if post.video2 %}
-              <a href="{{post.video2}}">video #2</a> /
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">code</a> /
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">poster</a> /
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> /
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Miscellaneous</h2>
+              <p>
+                <strong>EU Reports:</strong> <a href="https://www.clipe-itn.eu/article-category/public-project-deliverables">MSCA ITN Clipe project</a> <br />
+                <strong>CAE Projects:</strong> <a href="https://www.ijsrd.com/articles/IJSRDV4I80426.pdf">Rear View Camera System</a> (IJSRD 2016), <a href="https://doi.org/10.5281/zenodo.6926895">Glass Fiber Reinforced Polymer</a> (IRF 2014) <br />
+                <strong>Co-curricular:</strong> <a href="https://www.qu.edu.qa/en-us/research/kindi/">IAESTE Intern at Qatar University 2019</a>, <a href="https://github.com/carologistics">RoboCup Logistics League (Team Carologistics) 2018</a> <br />
+                <strong>Extra-curricular:</strong> <a href="https://www.dr.kth.se/previous-boards/">PhD Chapter at KTH</a>, <a href="https://kthais.com/about/team/vt21">KTH AI Society</a>, <a href="https://intra.kth.se/styrning/kths-organisation/kths-fakultetsrad/etikutskottet-1.1104520">KTH Ethics Committee</a>, <a href="https://www.rkuf.se/">Swedish Red Cross</a> <br />
+                <strong>Other links:</strong> <a href="https://www.kth.se/profile/chhatre">KTH website</a>, <a href="https://ps.is.mpg.de/person/kchhatre">MPI-IS website</a>, <a href="https://kiranchhatre.github.io/Industry/">Old website (Robotics demos)</a>
+              </p>
+              </p>
             </td>
           </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
         </table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
-            <td style="padding:0px">
+            <td style="padding:0px;text-align:left;">
               <br>
-              <p style="text-align:center;font-size:small;">
-                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website</a>
+              <p style="font-size:small;">
+                Updated on: {{ site.time | date: "%Y-%m-%d" }}
+              </p>
+            </td>
+            <td style="padding:0px;text-align:right;">
+              <br>
+              <p style="font-size:small;">
+                Thanks, <a style="font-size:small;" href="https://jonbarron.info">Jon Barron</a>!
               </p>
             </td>
           </tr>
