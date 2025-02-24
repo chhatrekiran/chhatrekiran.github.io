@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "EMOTE: Emotional Speech-Driven Animation with Content-Emotion Disentanglement"
+date:   2023-12-01 00:00:00 +00:00
+image: /images/emote.gif
+categories: research
+author: 
+authors: "<a href=\"https://ps.is.tuebingen.mpg.de/person/rdanecek\">Radek Daněček</a>, <strong>Kiran Chhatre</strong>, <a href=\"https://sha2nkt.github.io/\">Shashank Tripathi</a>, <a href=\"https://ydwen.github.io/\">Yandong Wen</a>, <a href=\"https://ps.is.tuebingen.mpg.de/person/black\">Michael J. Black</a>, <a href=\"https://sites.google.com/site/bolkartt\">Timo Bolkart</a>"
+venue: "ACM SIGGRAPH Asia Conference Papers"
+arxiv: https://arxiv.org/abs/2306.08990
+code: https://github.com/radekd91/inferno/tree/release/EMOTE/inferno_apps/TalkingHead
+website: https://emote.is.tue.mpg.de/
+video: https://download.is.tue.mpg.de/emote/EMOTE_SupMat_video.mp4
+x: https://x.com/DanecekRadek/status/1734561392877781377
+---
+Given audio input and an emotion label, EMOTE generates an animated 3D head that has state-of-the-art lip synchronization while expressing the emotion. The method is trained from 2D video sequences using a novel video emotion loss and a mechanism to disentangle emotion from speech.
