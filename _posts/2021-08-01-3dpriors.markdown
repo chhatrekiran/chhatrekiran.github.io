@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Spatio-temporal priors in 3D human motion"
+date:   2021-08-01 00:00:00 +00:00
+image: /images/st3dmotion.gif
+categories: research
+author: 
+authors: "<a href=\"https://annadeichler.github.io/\">Anna Deichler&#42;</a>, <strong>Kiran Chhatre&#42;</strong>, <a href=\"https://www.kth.se/profile/chpeters\">Christopher Peters</a>, <a href=\"https://www.kth.se/profile/beskow\">Jonas Beskow</a> (&#42 denotes equal contribution)"
+venue: "IEEE International Conference on Development and Learning (StEPP) workshop"
+arxiv: http://dx.doi.org/10.13140/RG.2.2.28042.80327
+website: https://sites.google.com/view/stepp21/contributions?authuser=0
+---
+This workshop paper investigates spatial-temporal priors for 3D human motion synthesis by comparing graph convolutional networks and transformer architectures to capture dynamic joint dependencies.

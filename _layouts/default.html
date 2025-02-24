@@ -3,33 +3,37 @@
 
 <head>
 
-  <!-- # Old Google Analytics
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script>
+  <!-- Google tag (gtag.js) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-L831GRY83T"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-E00L9PT3V9');
-  </script> 
-  -->
+    gtag('config', 'G-L831GRY83T');
+  </script> -->
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-M2HCFJDV"></script>
+   <!-- Matomo -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'GTM-M2HCFJDV');
+    var _paq = window._paq = window._paq || [];
+    _paq.push(['setUserId', 'USER_ID_HERE']);
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['trackAllContentImpressions']);
+    _paq.push(['enableLinkTracking']);
+    // Change how long a tab needs to be active to be counted as viewed in seconds/
+    // Requires a page to be actively viewed for 30 seconds for any heart beat request to be sent.
+    _paq.push(['enableHeartBeatTimer', 30]);
+    (function() {
+      var u="https://chhatrekiran.matomo.cloud/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src='https://cdn.matomo.cloud/chhatrekiran.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
   </script>
+  <!-- End Matomo Code -->
 
-  <!-- New Google Tag Manager -->
-  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-M2HCFJDV');</script> -->
-  <!-- End Google Tag Manager -->
 
 
   <title>{{ site.name }}</title>
@@ -42,6 +46,7 @@
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="icon" href="../favi.ico" type="image/x-icon">
 
 </head>
 
@@ -58,26 +63,49 @@
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr style="padding:0px">
             <td style="padding:2.5%;width:60%;vertical-align:middle">
-              <h1>
-                Leonid Keselman
+              <h1 style="font-size: 3em;">
+                Kiran Chhatre
+                <button onclick="document.getElementById('nameAudio').play()" style="background:none;border:none;cursor:pointer;">
+                  <img src="../media/audio.png" alt="Play pronunciation" style="width:15px;height:15px;vertical-align:middle;">
+                </button>
+                <audio id="nameAudio" src="../media/name.mp3"></audio>
               </h1>
-              <p>I am a PhD student at the <a href="https://www.ri.cmu.edu/">Robotics Institute</a>, part of the <a href="https://www.scs.cmu.edu/">School of Computer Science</a> at <a href="https://www.cmu.edu/">Carnegie Mellon University</a>, where I work on 3D computer vision. My PhD advisor is <a href="http://www.cs.cmu.edu/~hebert/">Martial Hebert</a>.
+              <p>
+                I am an <a href="https://www.clipe-itn.eu/">MSCA ITN PhD fellow</a> at the <a href="https://www.kth.se/en">KTH Royal Institute of Technology</a> (2021.01 – Present), where I am advised by <a href="https://www.kth.se/profile/chpeters">Christopher Peters</a>. During my PhD, I have had the opportunity to work closely with <a href="https://ps.is.mpg.de/person/black">Michael J. Black</a>, <a href="https://sites.google.com/site/bolkartt/">Timo Bolkart</a>, and <a href="https://research.adobe.com/person/srikrishna-karanam/">Srikrishna Karanam</a>. I have also gained valuable experience as a PhD intern at <a href="https://research.adobe.com/">Adobe Research</a>, the <a href="https://ps.is.mpg.de/">Max Planck Institute for Intelligent Systems (Perceiving Systems)</a>, <a href="https://www.ea.com/seed">Electronic Arts (SEED)</a>, and <a href="https://www.ubisoft.com/en-us/studio/laforge">Ubisoft La Forge</a>. 
               </p>
               <p>
-                From 2011 to 2017, I worked at <a href="https://www.intel.com">Intel</a>, as part of <a href="https://www.intelrealsense.com/">Intel RealSense</a>. I primarily designed computer vision algorithms for efficient hardware ASICs, including the Intel RealSense <a href="https://software.intel.com/en-us/articles/realsense-r200-camera">R200</a> and <a href="https://software.intel.com/en-us/realsense/d400">D400</a> RGB-D sensors. Additionally, I worked on <a href="https://github.com/IntelRealSense/librealsense">software APIs</a>, <a href="https://patents.google.com/patent/US9992474B2">active illumination systems</a>, <a href="https://patents.google.com/patent/US9304597">human-computer interaction devices</a>, and helped develop demos for trade shows, including CES 2012-2016.
-              </p>
-              <p>
-                I have an MS in Computer Science (AI focus) from <a href="http://cs.stanford.edu">Stanford University</a>, where I was a research assistant for <a href="http://svl.stanford.edu/">Silvio Savarese</a> and a teaching assistant for <a href="http://svl.stanford.edu/">Fei-Fei Li</a> (<a href="http://vision.stanford.edu/teaching/cs131_fall1617/">CS131</a> & <a href="http://cs231n.stanford.edu/2017/">CS231N</a>). I have a BS in EECS from <a href="http://www.eecs.berkeley.edu/">UC Berkeley</a>, where I worked in <a href="https://people.eecs.berkeley.edu/~pister/">Kris Pister's</a> lab.
+                Prior to my PhD, I worked as a Research Affiliate with the <a href="https://transportation.lbl.gov/beam">BEAM team</a> at <a href="https://www.lbl.gov/">Lawrence Berkeley National Laboratory</a>. I earned my <a href="https://www.academy.rwth-aachen.de/en/programs/masters-degree-programs/detail/msc-computer-aided-conception-and-production-in-mechanical-engineering">Master’s degree in Mechanical Engineering</a> from <a href="https://www.rwth-aachen.de/">RWTH Aachen University</a> (2017.09 – 2020.10), where I was advised by <a href="https://www.km.rwth-aachen.de/cms/KM/Das-Lehr-und-Forschungsgebiet/Team/Leitung/~qpvr/Mikhail-Itskov/lidx/1/">Mikhail Itskov</a>. During my master’s studies, I interned with <a href="https://research.ibm.com/">IBM Research</a>, <a href="https://www.3ds.com/products/simulia">Dassault Systèmes (SIMULIA)</a>, and the <a href="https://www.mckinsey.com/capabilities/operations/how-we-help-clients/innovation-and-learning-centers/our-centers/aachen">Innovation & Learning Center Aachen</a>. Before that, I worked at <a href="https://www.3ds.com/">Dassault Systèmes Solutions Lab</a> and <a href="https://www.autocoptrackpro.com/">Autocop Telematics</a>, and I completed my <a href="https://www.coeptech.ac.in/academics/schools/school-of-engineering-and-technology/school-of-mechanical-and-materials-engineering/">Bachelor’s degree in Mechanical Engineering</a> at <a href="https://www.coeptech.ac.in/">COEP Technological University</a> (2010.07 – 2014.05).
               </p>
               <p style="text-align:center">
-                <a target="_blank" href="https://mailhide.io/e/B8TyS"> Email</a> &nbsp;/&nbsp;
-                <a href="https://github.com/leonidk">GitHub</a> &nbsp;/&nbsp;
-                <a href="https://scholar.google.com/citations?user=GCYG4GoAAAAJ">Google Scholar</a> &nbsp;/&nbsp;
-                <a href="https://www.linkedin.com/in/lkeselman"> LinkedIn </a>
+                <script type="text/javascript">
+                  function writeObfuscatedEmail() {
+                    var emailParts = ["x63", "x68", "x68", "x61", "116", "114", "101", "x40", "x6b", "116", "x68", "x2e", "x73", "101"];
+                    var displayText = ["69", "109", "97", "105", "108"];
+                    var emailLink = "<a href=\"&#x6d;&#97;&#105;&#108;&#116;&#111;&#58;";
+                    for (var i = 0; i < emailParts.length; i++) {
+                      emailLink += "&#" + emailParts[i] + ";";
+                    }
+                    emailLink += "\">";
+                    for (var i = 0; i < displayText.length; i++) {
+                      emailLink += "&#" + displayText[i] + ";";
+                    }
+                    emailLink += "</a>";
+                    document.write(emailLink);
+                  }
+                  writeObfuscatedEmail();
+                </script>
+                &nbsp;/&nbsp;
+                <a href="../pdfs/Kiran_Chhatre_CV.pdf" target="_blank">CV</a> &nbsp;/&nbsp;
+                <a href="https://scholar.google.com/citations?user=MBKzL6kAAAAJ">Scholar</a> &nbsp;/&nbsp;
+                <a href="https://www.linkedin.com/in/kiranchhatre/"> LinkedIn </a> &nbsp;/&nbsp;
+                <a href="https://github.com/kiranchhatre">GitHub</a> &nbsp;/&nbsp;
+                <a href="https://x.com/ChhatreKiran"> X</a> &nbsp;/&nbsp;
+                <a href="https://bsky.app/profile/kiranchhatre.bsky.social"> Bluesky </a>
+
               </p>
             </td>
             <td style="padding:2.5%;width:40%;max-width:40%">
-              <img style="width:100%;max-width:100%" alt="profile photo" src="images/circle_bw_crop.jpg">
+              <img style="width:100%;max-width:100%" alt="profile photo" src="../images/dp.png">
             </td>
           </tr>
         </table>
@@ -87,8 +115,12 @@
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Research</h2>
               <p>
-                I'm interested in computer vision, machine learning, optimization, graphics and robotics.
+                My research lies at the intersection of computer vision and machine learning. I am particularly focused on the controllability of generative models, with an emphasis on generating realistic 3D human face and body motions. My work also includes the low-rank (LoRA) adaptation of vision-language models for visual grounding. Prior to specializing in computer vision, I explored multi-fidelity parallel Bayesian optimization for multi-agent systems, robotics (vision + control), and computer-aided engineering (CAE).
               </p>
+              <!-- <p>I am open to job market for full time positions in late 2025.</p> -->
+              
+              
+              
             </td>
           </tr>
         </table>
@@ -130,72 +162,8 @@
               {% if post.youtube %}
               <a href="{{post.youtube}}">youtube</a> /
               {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table>
-        <br>
-        <br>
-        <br>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Intel Projects</h2>
-              <p>Besides my work on the RealSense depth sensors and the publications above, a sampling of my publicly disclosed work
-              </p>
-            </td>
-          </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'Intel' %}
-          <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
-              <br>
-              <em>{{post.categories}} {{post.course}}</em>
-              <br>
-              {{ post.date | date: "%Y-%m-%d" }}
-
-              <br>
-              {% if post.website %}
-              <a href="{{post.website}}">website</a> /
-              {% endif %}
-              {% if post.paper %}
-              <a href="{{post.paper}}">paper</a> /
-              {% endif %}
-              {% if post.patent %}
-              <a href="{{post.patent}}">patent</a> /
-              {% endif %}
-              {% if post.patent2 %}
-              <a href="{{post.patent2}}">patent #2</a> /
-              {% endif %}
-              {% if post.patent3 %}
-              <a href="{{post.patent3}}">patent #3</a> /
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
-              {% endif %}
-              {% if post.video2 %}
-              <a href="{{post.video2}}">video #2</a> /
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">code</a> /
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">poster</a> /
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> /
+              {% if post.x %}
+              <a href="{{post.x}}">x thread</a> /
               {% endif %}
               <p></p>
               {{ post.excerpt }}
@@ -212,16 +180,15 @@
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Other Projects</h2>
-              <p> These include coursework, side projects and unpublished research work. 
-              </p>
             </td>
           </tr>
         </table>
+       
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
 
           {% for post in site.posts %}
           {% for cat in post.categories %}
-          {% if cat != 'research' and cat != 'Intel' %}
+          {% if cat == 'other' %}
           <tr>
             <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
               <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
@@ -229,10 +196,9 @@
             <td style="padding:2.5%;width:75%;vertical-align:middle">
               <h3>{{post.title}}</h3>
               <br>
-              <em>{{post.categories}} {{post.course}}</em>
+              {{post.authors}}
               <br>
-              {{ post.date | date: "%Y-%m-%d" }}
-
+              <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
               {% if post.website %}
               <a href="{{post.website}}">website</a> /
@@ -258,11 +224,20 @@
               {% if post.code %}
               <a href="{{post.code}}">code</a> /
               {% endif %}
+              {% if post.code2 %}
+              <a href="{{post.code2}}">code #2</a> /
+              {% endif %}
               {% if post.poster %}
               <a href="{{post.poster}}">poster</a> /
               {% endif %}
               {% if post.slides %}
               <a href="{{post.slides}}">slides</a> /
+              {% endif %}
+              {% if post.documentation %}
+              <a href="{{post.documentation}}">documentation</a> /
+              {% endif %}
+              {% if post.award %}
+              <a href="{{post.award}}">award</a> /
               {% endif %}
               <p></p>
               {{ post.excerpt }}
@@ -272,13 +247,51 @@
           {% endfor %}
           {% endfor %}
         </table>
+        <br>
+        <br>
+        <br>
+        
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Academic Services</h2>
+              <p>
+                <strong>Conference Reviewer:</strong> ICLR, SIGGRAPH, SIGGRAPH Asia, CVPRW, ISMAR, AAMAS, LOD, CoG, IVA <br />
+                <strong>Journal Reviewer:</strong> Pattern Recognition <br />
+                <strong>Program Committee:</strong> <a href="https://eg2024.cyens.org.cy/workshops/">CLIPE Workshop at Eurographics 2024</a>
+              </p>
+            </td>
+          </tr>
+        </table>
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
-            <td style="padding:0px">
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Miscellaneous</h2>
+              <p>
+                <strong>EU Reports:</strong> <a href="https://www.clipe-itn.eu/article-category/public-project-deliverables">MSCA ITN Clipe project</a> <br />
+                <strong>CAE Projects:</strong> <a href="https://www.ijsrd.com/articles/IJSRDV4I80426.pdf">Rear View Camera System</a> (IJSRD 2016), <a href="https://doi.org/10.5281/zenodo.6926895">Glass Fiber Reinforced Polymer</a> (IRF 2014) <br />
+                <strong>Co-curricular:</strong> <a href="https://www.qu.edu.qa/en-us/research/kindi/">IAESTE Intern at Qatar University 2019</a>, <a href="https://github.com/carologistics">RoboCup Logistics League (Team Carologistics) 2018</a> <br />
+                <strong>Extra-curricular:</strong> <a href="https://www.dr.kth.se/previous-boards/">PhD Chapter at KTH</a>, <a href="https://kthais.com/about/team/vt21">KTH AI Society</a>, <a href="https://intra.kth.se/styrning/kths-organisation/kths-fakultetsrad/etikutskottet-1.1104520">KTH Ethics Committee</a>, <a href="https://www.rkuf.se/">Swedish Red Cross</a> <br />
+                <strong>Other links:</strong> <a href="https://www.kth.se/profile/chhatre">KTH website</a>, <a href="https://ps.is.mpg.de/person/kchhatre">MPI-IS website</a>, <a href="https://kiranchhatre.github.io/Industry/">Old website (Robotics demos)</a>
+              </p>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:0px;text-align:left;">
               <br>
-              <p style="text-align:center;font-size:small;">
-                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website</a>
+              <p style="font-size:small;">
+                Updated on: {{ site.time | date: "%Y-%m-%d" }}
+              </p>
+            </td>
+            <td style="padding:0px;text-align:right;">
+              <br>
+              <p style="font-size:small;">
+                Thanks, <a style="font-size:small;" href="https://jonbarron.info">Jon Barron</a>!
               </p>
             </td>
           </tr>
