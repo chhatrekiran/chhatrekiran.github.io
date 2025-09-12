@@ -15,6 +15,7 @@
 
 
 
+
   <title>{{ site.name }}</title>
 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -186,8 +187,10 @@
     }
     
     .research-highlight {
-      font-weight: 500;
-      letter-spacing: 0.02em;
+      font-weight: 450;
+      background: linear-gradient(120deg, rgba(23, 114, 208, 0.04) 0%, rgba(23, 114, 208, 0.06) 100%);
+      padding: 1px 3px;
+      border-radius: 3px;
     }
   </style>
 
@@ -425,6 +428,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+
   <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tr style="padding:0px">
       <td style="padding:0px">
@@ -504,7 +508,7 @@
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Research</h2>
               <p style="text-align: justify;">
-                My research lies at the intersection of computer vision and machine learning. I am particularly focused on the <span class="research-highlight">controllability of generative models</span> across various modalities (<span class="research-highlight">image, video, 3D, 4D</span>). I have broadly worked on visual grounding and audio reasoning of <span class="research-highlight">Multimodal Large Language Models</span> (MLLMs), and <span class="research-highlight">synthetic 3D and 4D physics interaction data generation</span>. I have also worked on <span class="research-highlight">emotional 3D animation of virtual humans</span>, with applications in <span class="research-highlight">VR</span>-based human–computer interaction (<span class="research-highlight">HCI</span>). Previously, I explored Bayesian optimization for <span class="research-highlight">multi-agent systems</span>, robotics, and computer-aided engineering.
+                My research lies at the intersection of computer vision and machine learning, particularly focused on the <span class="research-highlight">controllability of generative models</span> across various modalities (<span class="research-highlight">image, video, 3D, 4D</span>). I have broadly worked on <span class="research-highlight">foundation model post-training</span> for visual grounding and audio reasoning, <span class="research-highlight">synthetic 3D and 4D physics interaction data generation</span>, and <span class="research-highlight">emotional 3D animation of virtual humans</span> with applications in <span class="research-highlight">VR</span>-based human–computer interaction (<span class="research-highlight">HCI</span>). Previously, I explored Bayesian optimization for <span class="research-highlight">multi-agent systems</span>, robotics, and computer-aided engineering.
               </p>
               
               <p>
@@ -514,7 +518,7 @@
               <!-- Category Filter Buttons -->
               <div style="margin: 15px 0; text-align: center;">
                 <button class="category-filter-btn" onclick="filterProjects('all')" id="filter-all">all</button> /
-                <button class="category-filter-btn" onclick="filterProjects('vlm')" id="filter-vlm">MLLM</button> /
+                <button class="category-filter-btn" onclick="filterProjects('vlm')" id="filter-vlm">foundation post-training</button> /
                 <button class="category-filter-btn" onclick="filterProjects('3d-humans')" id="filter-3d-humans">3D humans</button> /
                 <button class="category-filter-btn" onclick="filterProjects('speech')" id="filter-speech">speech</button> /
                 <button class="category-filter-btn" onclick="filterProjects('hci')" id="filter-hci">HCI</button> /
@@ -538,7 +542,7 @@
               <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
             <td style="padding:2.5%;width:75%;vertical-align:top">
-              <h3>{{post.title}}{% if post.title contains "Audiopedia" %}<span class="paper-tag oral">oral</span>{% elsif post.title contains "Evaluation of Generative Models" %}<span class="paper-tag journal">journal</span>{% elsif post.title contains "BEAMBayesOpt" %}<span class="paper-tag journal">special mentions</span>{% endif %}</h3>
+              <h3>{{post.title}}{% if post.title contains "Audiopedia" %}<span class="paper-tag oral">oral</span>{% elsif post.title contains "BEAMBayesOpt" %}<span class="paper-tag journal">special mentions</span>{% elsif post.title contains "Synthetically Expressive" %}<span class="paper-tag oral">best paper award</span>{% endif %}</h3>
               <br>
               {{post.authors}}
 
@@ -734,6 +738,9 @@ series = {SA '23}
       </td>
     </tr>
   </table>
+
+  <!-- 100% privacy-first analytics -->
+  <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 </body>
 
 </html>
