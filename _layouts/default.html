@@ -338,7 +338,7 @@
         var categories = {
           'all': [],
           '3d-humans': ['AMUSE:', 'EMOTE:', 'Spatio-temporal'],
-          'hci': ['Synthetically Expressive:', 'Evaluation of Generative Models'],
+          'hci': ['Synthetically Expressive:', 'Evaluation of Generative Models', 'Towards Reliable Human Evaluations'],
           'vlm': ['Spectrum:', 'Audiopedia:'],
           'speech': ['AMUSE:', 'Audiopedia:'],
           'other': ['Computer-Aided', 'BEAMBayesOpt:', 'Rethinking Computer-Aided']
@@ -550,7 +550,7 @@
               <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
               {% if post.frontiers_paper %}
-              <a href="{{post.frontiers_paper}}">frontiers paper</a> /
+              <a href="{{post.frontiers_paper}}">arxiv</a> /
               {% endif %}
               {% if post.i3d_paper %}
               <a href="{{post.i3d_paper}}">i3d workshop</a> /
@@ -618,6 +618,14 @@
   author={Du, Haoyang and Chhatre, Kiran and Peters, Christopher and Keegan, Brian and McDonnell, Rachel and Ennis, Cathy},
   journal={arXiv preprint arXiv:2506.23777},
   year={2025}
+}{% elsif post.title contains "Towards Reliable Human Evaluations" %}@misc{nagy2025reliablehumanevaluationsgesture,
+  title={Towards Reliable Human Evaluations in Gesture Generation: Insights from a Community-Driven State-of-the-Art Benchmark},
+  author={Rajmund Nagy and Hendric Voss and Thanh Hoang-Minh and Mihail Tsakov and Teodor Nikolov and Zeyi Zhang and Tenglong Ao and Sicheng Yang and Shaoli Huang and Yongkang Cheng and M. Hamza Mughal and Rishabh Dabral and Kiran Chhatre and Christian Theobalt and Libin Liu and Stefan Kopp and Rachel McDonnell and Michael Neff and Taras Kucherenko and Youngwoo Yoon and Gustav Eje Henter},
+  year={2025},
+  eprint={2511.01233},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2511.01233},
 }{% elsif post.title contains "Evaluation of Generative Models" %}@article{chhatre2025evaluation,
   title={Evaluation of Generative Models for Emotional 3D Animation Generation in VR},
   author={Chhatre, Kiran and Guarese, Renan and Matviienko, Andrii and Peters, Christopher Edward},
@@ -695,8 +703,8 @@ series = {SA '23}
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Academic Services</h2>
               <p>
-                <strong>Conference Reviewer:</strong> NeurIPS, ICLR, AAAI, ICCV, SIGGRAPH, SIGGRAPH Asia, ISMAR, CoG, IVA <br />
-                <strong>Journal Reviewer:</strong> Pattern Recognition, IEEE Transactions on Affective Computing <br />
+                <strong>Conference Reviewer:</strong> CVPR, NeurIPS, ICLR, AAAI, ICCV, SIGGRAPH, SIGGRAPH Asia, Eurographics, ISMAR, CoG, IVA <br />
+                <strong>Journal Reviewer:</strong> TOG, TVCG, Pattern Recognition, IEEE Transactions on Affective Computing <br />
                 <strong>Program Committee:</strong> <a href="https://eg2024.cyens.org.cy/workshops/">CLIPE Workshop at Eurographics 2024</a>
               </p>
             </td>
