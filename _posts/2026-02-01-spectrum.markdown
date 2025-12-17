@@ -6,8 +6,10 @@ image: /images/spectrum.gif
 categories: research
 author: 
 authors: "<strong>Kiran Chhatre</strong>, <a href=\"https://www.kth.se/profile/chpeters\">Christopher Peters</a>, <a href=\"https://karanams.github.io/\">Srikrishna Karanam</a>"
-venue: "Association for the Advancement of Artificial Intelligence (AAAI)" 
+venue: "Association for the Advancement of Artificial Intelligence (AAAI)"
 arxiv: https://arxiv.org/abs/2508.06032
+poster: https://kth-my.sharepoint.com/:b:/g/personal/chhatre_ug_kth_se/IQAMSiUwRsa3QIdktNritRaXATEDlebuNXF5KeuqLW09zLM
 website: https://s-pectrum.github.io/
+x: https://x.com/ChhatreKiran/status/2013165496187904042
 ---
 Spectrum introduces a novel repurposing of an Image-to-Texture diffusion model for improved alignment with body parts and clothing, enabling detailed human parsing that handles diverse clothing types and complex poses across any number of humans in the scene.
