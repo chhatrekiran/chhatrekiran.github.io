@@ -149,42 +149,79 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      column-gap: 16px;
-      row-gap: 12px;
-      margin: 22px 0;
-      padding: 12px 4px;
-      flex-wrap: wrap;
+      gap: 6px;
+      margin: 18px 0;
+      padding: 8px 0;
+      flex-wrap: nowrap;
       max-width: 100%;
       overflow-x: hidden;
     }
     
     .logo-item {
-      height: 46px;
-      width: auto;
-      max-width: 112px;
+      width: 64px;
+      height: 34px;
       object-fit: contain;
+      display: block;
+      flex: 0 0 64px;
       filter: grayscale(30%);
       transition: filter 0.3s ease;
-      flex-shrink: 0;
+    }
+
+    .logo-item.logo-up,
+    .logo-item.logo-down {
+      width: 64px;
+      height: 34px;
+      flex: 0 0 64px;
+    }
+
+    .logo-item.logo-berkeley {
+      width: 92px;
+      flex: 0 0 92px;
     }
     
     .logo-item:hover {
       filter: grayscale(0%);
     }
-    
-    .logo-item.sony-small {
-      height: 23px;
-      max-width: 66px;
-    }
-    
-    .logo-item.kth-large {
-      height: 56px;
-      max-width: 128px;
-    }
-    
-    .logo-item.small {
+
+    .back-to-top-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 38px;
       height: 38px;
-      max-width: 92px;
+      border: none;
+      border-radius: 999px;
+      background-color: #1772d0;
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+      z-index: 999;
+    }
+
+    .back-to-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top-btn:hover {
+      background-color: #0f5fb2;
+    }
+
+    @media (max-width: 768px) {
+      .back-to-top-btn {
+        right: 14px;
+        bottom: 14px;
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+      }
     }
     
     .research-highlight {
@@ -468,7 +505,7 @@
                   writeObfuscatedEmail();
                 </script>
                 &nbsp;/&nbsp;
-                <a href="../pdfs/Kiran_Chhatre_CV.pdf" target="_blank">CV</a> &nbsp;/&nbsp;
+                <a href="../pdfs/Kiran_Chhatre_CV.pdf" target="_blank">Resume</a> &nbsp;/&nbsp;
                 <a href="https://scholar.google.com/citations?hl=en&user=MBKzL6kAAAAJ&view_op=list_works&sortby=pubdate">Scholar</a> &nbsp;/&nbsp;
                 <a href="https://www.linkedin.com/in/kiranchhatre/"> LinkedIn </a> &nbsp;/&nbsp;
                 <a href="https://github.com/kiranchhatre">GitHub</a> &nbsp;/&nbsp;
@@ -489,16 +526,16 @@
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <div class="logo-container">
-                <img src="/tn/logos/kth_logo.png" alt="KTH Royal Institute of Technology" class="logo-item kth-large" />
-                <img src="/tn/logos/mpi_logo.png" alt="Max Planck Institute for Intelligent Systems" class="logo-item" />
-                <img src="/tn/logos/rwth-logo-png-transparent.png" alt="RWTH Aachen University" class="logo-item" />
-                <img src="/tn/logos/meta_symbol.png" alt="Meta" class="logo-item" />
-                <img src="/tn/logos/adobe_logo.png" alt="Adobe Research" class="logo-item" />
-                <img src="/tn/logos/Sony_logo.svg.png" alt="Sony Research" class="logo-item sony-small" />
-                <img src="/tn/logos/ea_logo.svg" alt="Electronic Arts" class="logo-item small" />
-                <img src="/tn/logos/ubisoft_logo.png" alt="Ubisoft La Forge" class="logo-item small" />
-                <img src="/tn/logos/ibm_logo.jpg" alt="IBM Research" class="logo-item small" />
-                <img src="/tn/logos/berkeley_logo.jpg" alt="Lawrence Berkeley National Laboratory" class="logo-item" />
+                <img src="/tn/logos/kth_logo.png" alt="KTH Royal Institute of Technology" class="logo-item logo-up" />
+                <img src="/tn/logos/mpi_logo.png" alt="Max Planck Institute for Intelligent Systems" class="logo-item logo-up" />
+                <img src="/tn/logos/rwth-logo-png-transparent.png" alt="RWTH Aachen University" class="logo-item logo-down" />
+                <img src="/tn/logos/meta_symbol.png" alt="Meta" class="logo-item logo-down" />
+                <img src="/tn/logos/adobe_logo.png" alt="Adobe Research" class="logo-item logo-up" />
+                <img src="/tn/logos/Sony_logo.svg.png" alt="Sony Research" class="logo-item logo-down" />
+                <img src="/tn/logos/ea_logo.svg" alt="Electronic Arts" class="logo-item" />
+                <img src="/tn/logos/ubisoft_logo.png" alt="Ubisoft La Forge" class="logo-item" />
+                <img src="/tn/logos/ibm_logo.jpg" alt="IBM Research" class="logo-item logo-down" />
+                <img src="https://cltc.ucdavis.edu/sites/g/files/dgvnsk12206/files/2023-06/berkeley%20lab_logo.png" alt="Lawrence Berkeley National Laboratory" class="logo-item logo-up logo-berkeley" />
               </div>
             </td>
           </tr>
@@ -510,13 +547,13 @@
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Research</h2>
               <p style="text-align: justify;">
-                My research lies at the intersection of computer vision and machine learning, particularly focused on the <span class="research-highlight">controllability of generative models</span> across various modalities (<span class="research-highlight">image, video, 3D, 4D</span>). I have broadly worked on <span class="research-highlight">foundation model post-training</span> for video-to-video editing, visual grounding, and audio reasoning, <span class="research-highlight">synthetic 3D and 4D physics interaction data generation</span>, and <span class="research-highlight">emotional 3D animation of virtual humans</span> with applications in <span class="research-highlight">VR</span>-based human–computer interaction (<span class="research-highlight">HCI</span>). Previously, I explored Bayesian optimization for <span class="research-highlight">multi-agent systems</span>, robotics, and computer-aided engineering.
-              </p>
+  My research lies at the intersection of computer vision and machine learning, with a focus on <span class="research-highlight">controllable generative modeling</span> across <span class="research-highlight">video, image, 3D, and 4D modalities</span>. I work on <span class="research-highlight">foundation model post-training</span> for <span class="research-highlight">video generation and video-to-video editing</span>, <span class="research-highlight">multimodal vision language evaluation</span>, visual grounding, and audio reasoning. I also study <span class="research-highlight">physics-based simulation and synthetic 3D/4D interaction data generation</span>, along with <span class="research-highlight">3D face and body animation of virtual humans</span> for VR-based human–computer interaction (<span class="research-highlight">HCI</span>). Previously, I explored Bayesian optimization for <span class="research-highlight">multi-agent systems</span>, robotics, and computer-aided engineering.
+</p>
               
               <!-- Category Filter Buttons -->
               <div style="margin: 15px 0; text-align: center;">
                 <button class="category-filter-btn" onclick="filterProjects('all')" id="filter-all">all</button> /
-                <button class="category-filter-btn" onclick="filterProjects('vlm')" id="filter-vlm">foundation post-training</button> /
+                <button class="category-filter-btn" onclick="filterProjects('vlm')" id="filter-vlm">multimodal understanding &amp; generation</button> /
                 <button class="category-filter-btn" onclick="filterProjects('3d-humans')" id="filter-3d-humans">3D humans</button> /
                 <button class="category-filter-btn" onclick="filterProjects('speech')" id="filter-speech">speech</button> /
                 <button class="category-filter-btn" onclick="filterProjects('hci')" id="filter-hci">HCI</button> /
@@ -611,11 +648,14 @@
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2508.06032}, 
-}{% elsif post.title contains "TrajectoryMover" %}@article{trajectorymover_2026,
-  title   = {TrajectoryMover: Generative Movement of Object Trajectories in Videos},
-  author  = {To be added},
-  journal = {To be added},
-  year    = {2026}
+}{% elsif post.title contains "TrajectoryMover" %}@misc{chhatre2026trajectorymovergenerativemovementobject,
+  title={TrajectoryMover: Generative Movement of Object Trajectories in Videos}, 
+  author={Kiran Chhatre and Hyeonho Jeong and Yulia Gryaditskaya and Christopher E. Peters and Chun-Hao Paul Huang and Paul Guerrero},
+  year={2026},
+  eprint={2603.29092},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2603.29092}, 
 }{% elsif post.title contains "Synthetically Expressive" %}@article{du2025synthetically,
   title={Synthetically Expressive: Evaluating gesture and voice for emotion and empathy in VR and 2D scenarios},
   author={Du, Haoyang and Chhatre, Kiran and Peters, Christopher and Keegan, Brian and McDonnell, Rachel and Ennis, Cathy},
@@ -697,16 +737,53 @@ series = {SA '23}
           {% endfor %}
           {% endfor %}
         </table>
-        <br>
-        <br>
-        <br>
-        
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
+            <td style="padding:1.2% 2.5%;width:100%;vertical-align:middle">
+              <h2>Honors & Awards</h2>
+              <p style="margin:8px 0 0 0;">
+                <a href="https://www.acm.org/conferences/best-paper-awards">ACM IVA Best Paper Award</a> — 2025 <br />
+                <a href="https://www.clipe-itn.eu/">Marie Skłodowska-Curie Actions fellowship (CLIPE Project), KTH</a> — 2021–2024 <br />
+                Swedish Karl Engvers Foundation scholarship, KTH — 2021 <br />
+                <a href="https://www.lbl.gov/">Lawrence Berkeley National Laboratory fellowship</a> — 2019–2020 <br />
+                German National Hans Hermann Voss Foundation scholarship, <a href="https://www.rwth-aachen.de/">RWTH Aachen University</a> — 2019–2020 <br />
+                <a href="https://www.daad.de/en/">DAAD</a> travel grant for IAESTE internship, <a href="https://www.qu.edu.qa/en-us/research/kindi/">Qatar University (KINDI)</a> — 2019 <br />
+                Government of India scholarship, <a href="https://www.rwth-aachen.de/">RWTH Aachen University</a> — 2017–2019
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:1.2% 2.5%;width:100%;vertical-align:middle">
+              <h2>Invited Talks & Outreach</h2>
+              <p style="margin:8px 0 0 0;">
+                <a href="https://www.astrazeneca.com/">AstraZeneca</a> (hosted by <a href="https://www.linkedin.com/in/arthur-lewis-1129462a/">Arthur Lewis</a>), Stockholm Sweden — Dec 2025 <br />
+                <a href="https://www.iiserpune.ac.in/events/4954/democratizing-lifelike-avatars">Indian Institute of Science Education and Research</a> (hosted by <a href="http://sites.iiserpune.ac.in/~apte/">Prof. Amit Apte</a>), Pune India — Jun 2025 <br />
+                <a href="https://www.iii.u-tokyo.ac.jp/event/20250418event">University of Tokyo</a> (hosted by <a href="https://lab.rekimoto.org/">Prof. Jun Rekimoto</a>), Tokyo Japan — May 2025 <br />
+                <a href="https://ai.sony/">Sony AI</a> (hosted by <a href="https://ai.sony/people/Takashi-Shibuya/">Takashi Shibuya</a>), Kyoto Japan — Apr 2025 <br />
+                <a href="https://iplab.dmi.unict.it/icvss2024/">International Computer Vision Summer School (ICVSS)</a>, Sicily Italy — Jul 2024 <br />
+                <a href="https://iisc.ac.in/">Indian Institute of Science</a> (hosted by <a href="https://ece.iisc.ac.in/~rajivs/#/">Prof. Rajiv Soundararajan</a>), Bengaluru India — Jun 2024 <br />
+                <a href="https://eg2024.cyens.org.cy/workshops/">Eurographics CLIPE Workshop</a>, Limassol Cyprus — Apr 2024 <br />
+                <a href="https://www.tcd.ie/">Trinity College Dublin</a> (hosted by <a href="https://scholar.google.com/citations?user=VnOvdegAAAAJ&hl=en">Prof. Carol O’Sullivan</a>), Dublin Ireland — Feb 2024 <br />
+                <a href="https://sites.google.com/view/researchweek24/home">Google DeepMind Research Week</a>, Bengaluru India — Feb 2024 <br />
+                <a href="https://www.clipe-itn.eu/news/training-workshop-3%3A-current-trends-in-virtual-humans">Current Trends in Virtual Humans</a>, Universitat Politècnica de Catalunya Barcelona Tech (UPC) — Sep 2022 <br />
+                <a href="https://www.clipe-itn.eu/news/training-workshop-1%3A-summer-school-on-virtual-humans">Summer School on Virtual Humans</a>, University of Cyprus — Sep 2021 <br />
+                <a href="https://www.ted.com/tedx/events/42592">TEDxKTH Salon</a>: AI – what should we focus on?, Stockholm Sweden — May 2021 <br />
+                Contrastive Learning for Visual Representations, <a href="https://www.kthais.com/events/event/knowledge-sharing-session-4">KTH AI Society</a>, Stockholm Sweden — Apr 2021 <br />
+                Data-driven motion synthesis, <a href="https://www.kthais.com/events/event/knowledge-sharing-session-1">KTH AI Society</a>, Stockholm Sweden — Mar 2021
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:1.2% 2.5%;width:100%;vertical-align:middle">
               <h2>Academic Services</h2>
-              <p>
-                <strong>Conference Reviewer:</strong> CVPR, NeurIPS, ICLR, AAAI, ICCV, SIGGRAPH, SIGGRAPH Asia, Eurographics, ISMAR, CoG, IVA <br />
+              <p style="margin:8px 0 0 0;">
+                <strong>Conference Reviewer:</strong> CVPR, ICCV, ECCV, NeurIPS, ICLR, AAAI, SIGGRAPH / SIGGRAPH Asia, Eurographics, BMVC, FG <br />
                 <strong>Journal Reviewer:</strong> TOG, TVCG, Pattern Recognition, IEEE Transactions on Affective Computing <br />
                 <strong>Program Committee:</strong> <a href="https://eg2024.cyens.org.cy/workshops/">CLIPE Workshop at Eurographics 2024</a>
               </p>
@@ -716,15 +793,44 @@ series = {SA '23}
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Miscellaneous</h2>
-              <p>
+            <td style="padding:1.2% 2.5%;width:100%;vertical-align:middle">
+              <h2>Teaching</h2>
+              <p style="margin:8px 0 0 0;">
+                <a href="https://www.kth.se/student/kurser/kurs/DH2323?l=en">DH2323 Computer Graphics and Interaction</a> — Spring 2021, 2023, 2025, 2026 <br />
+                <a href="https://www.kth.se/student/kurser/kurs/DD2380?l=en">DD2380 Artificial Intelligence</a> — Autumn 2021, 2023, 2024 <br />
+                <a href="https://www.kth.se/student/kurser/kurs/DM1590?l=en">DM1590 Machine Learning for Media Technology</a> — Spring 2022 <br />
+                <a href="https://www.kth.se/student/kurser/kurs/DD2437?l=en">DD2437 Artificial Neural Networks and Deep Architectures</a> — Autumn 2021 <br />
+                <a href="https://www.kth.se/student/kurser/kurs/DD2421?l=en">DD2421 Machine Learning</a> — Autumn 2021
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:1.2% 2.5%;width:100%;vertical-align:middle">
+              <h2>Mentorship</h2>
+              <p style="margin:8px 0 0 0;">
+                Jinshi Ding, M.Sc. in Software Engineering of Distributed Systems, KTH (2026 Winter – Present) <br />
+                Benhou Li, M.Sc. in Computer Science, KTH (2025 Winter) → Gameplay Programmer, <a href="https://www.bytedance.com/">ByteDance</a>, <a href="https://kth.diva-portal.org/smash/record.jsf?pid=diva2%3A1987334">(Thesis)</a> <br />
+                Peiyang Zheng, M.Sc. in Computer Science, KTH (2024 Summer) → LLM SDE, <a href="https://www.zeekrlife.com/global/">Zeekr Technology Europe</a> <br />
+                Simon Wanna, B.Sc. in Media Technology, KTH (2023 Summer – 2024 Spring) → Intern, <a href="https://www.scania.com/">Scania AB</a> <br />
+                Tom Boustedt, B.Sc. in Media Technology, KTH (2023 Summer – 2024 Spring) → RA, <a href="https://www.washington.edu/">University of Washington</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:1.2% 2.5%;width:100%;vertical-align:middle">
+              <h2>Additional Activities</h2>
+              <p style="margin:8px 0 0 0;">
                 <strong>EU Reports:</strong> <a href="https://www.clipe-itn.eu/article-category/public-project-deliverables">MSCA ITN Clipe project</a> <br />
                 <strong>CAE Projects:</strong> <a href="https://www.ijsrd.com/articles/IJSRDV4I80426.pdf">Rear View Camera System</a> (IJSRD 2016), <a href="https://doi.org/10.5281/zenodo.6926895">Glass Fiber Reinforced Polymer</a> (IRF 2014) <br />
-                <strong>Co-curricular:</strong> <a href="https://www.qu.edu.qa/en-us/research/kindi/">IAESTE Intern at Qatar University 2019</a>, <a href="https://github.com/carologistics">RoboCup Logistics League (Team Carologistics) 2018</a> <br />
+                <strong>Robotics Projects:</strong> <a href="https://ita-academy.de/en/welcome/">Robotics Developer @ ITA Academy GmbH</a>, <a href="https://github.com/carologistics">RoboCup Logistics League (Team Carologistics) 2018</a> <br />
                 <strong>Extra-curricular:</strong> <a href="https://www.dr.kth.se/previous-boards/">PhD Chapter at KTH</a>, <a href="https://kthais.com/about/team/vt21">KTH AI Society</a>, <a href="https://intra.kth.se/styrning/kths-organisation/kths-fakultetsrad/etikutskottet-1.1104520">KTH Ethics Committee</a>, <a href="https://www.rkuf.se/">Swedish Red Cross</a> <br />
                 <strong>Other links:</strong> <a href="https://www.kth.se/profile/chhatre">KTH website</a>, <a href="https://ps.is.mpg.de/person/kchhatre">MPI-IS website</a>, <a href="https://kiranchhatre.github.io/Industry/">Old website (Robotics demos)</a>
-              </p>
               </p>
             </td>
           </tr>
@@ -749,6 +855,30 @@ series = {SA '23}
       </td>
     </tr>
   </table>
+
+  <button id="backToTopBtn" class="back-to-top-btn" type="button" aria-label="Back to top">↑</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var backToTopBtn = document.getElementById('backToTopBtn');
+      if (!backToTopBtn) return;
+
+      function toggleBackToTopBtn() {
+        if (window.scrollY > 280) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      }
+
+      window.addEventListener('scroll', toggleBackToTopBtn);
+      backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      toggleBackToTopBtn();
+    });
+  </script>
 
   <!-- 100% privacy-first analytics -->
   <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>

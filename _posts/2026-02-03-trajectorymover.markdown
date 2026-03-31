@@ -7,7 +7,7 @@ categories: research
 author:
 authors: "<strong>Kiran Chhatre</strong>, <a href=\"https://hyeonho99.github.io/\">Hyeonho Jeong</a>, <a href=\"https://yulia.gryaditskaya.com/\">Yulia Gryaditskaya</a>, <a href=\"https://www.kth.se/profile/chpeters\">Christopher E. Peters</a>, <a href=\"https://paulchhuang.wixsite.com/chhuang\">Chun-Hao Paul Huang</a>, <a href=\"https://paulguerrero.net/\">Paul Guerrero</a>"
 venue: "arXiv preprint"
-arxiv: https://arxiv.org/
+arxiv: https://arxiv.org/abs/2603.29092
 website: https://chhatrekiran.github.io/trajectorymover/
 code: https://github.com/kiranchhatre/TrajectoryMover
 ---

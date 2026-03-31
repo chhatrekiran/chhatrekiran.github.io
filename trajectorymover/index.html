@@ -27,7 +27,7 @@
     }
 
     * {
-      box-sizing: border-box;
+      box-sizing: border-box;-
       margin: 0;
       padding: 0;
     }
@@ -123,6 +123,13 @@
       line-height: 1.5;
       margin-bottom: 18px;
       text-align: center;
+    }
+
+    .authors sup {
+      font-size: 0.62em;
+      vertical-align: super;
+      margin-left: 2px;
+      letter-spacing: 0.5px;
     }
 
     .affiliation-grid {
@@ -285,7 +292,7 @@
 
     .video-list {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(var(--video-cols, 1), minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -449,6 +456,10 @@
         width: 96vw;
       }
 
+      .video-list {
+        grid-template-columns: 1fr !important;
+      }
+
       .affiliation-grid {
         gap: 24px;
       }
@@ -465,7 +476,7 @@
       <img class="hero-logo" src="assets/Trajmover_logo.png" alt="TrajectoryMover logo">
       <h1>Generative Movement of Object Trajectories in Videos</h1>
       <div class="hero-links">
-        <a class="hero-link-btn" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer">
+        <a class="hero-link-btn" href="https://arxiv.org/abs/2603.29092" target="_blank" rel="noopener noreferrer">
           <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/arxiv/ffffff" alt="">arxiv</span>
         </a>
         <a class="hero-link-btn" href="https://github.com/kiranchhatre/TrajectoryMover" target="_blank" rel="noopener noreferrer">
@@ -476,24 +487,24 @@
         </a>
       </div>
       <p class="authors">
-        <a href="https://chhatrekiran.github.io/" target="_blank" rel="noopener noreferrer">Kiran Chhatre</a>,
-        <a href="https://hyeonho99.github.io/" target="_blank" rel="noopener noreferrer">Hyeonho Jeong</a>,
-        <a href="https://yulia.gryaditskaya.com/" target="_blank" rel="noopener noreferrer">Yulia Gryaditskaya</a>,
-        <a href="https://www.kth.se/profile/chpeters" target="_blank" rel="noopener noreferrer">Christopher E. Peters</a>,
-        <a href="https://paulchhuang.wixsite.com/chhuang" target="_blank" rel="noopener noreferrer">Chun-Hao Paul Huang</a>,
-        <a href="https://paulguerrero.net/" target="_blank" rel="noopener noreferrer">Paul Guerrero</a>
+        <a href="https://chhatrekiran.github.io/" target="_blank" rel="noopener noreferrer">Kiran Chhatre</a><sup>†‡</sup>,
+        <a href="https://hyeonho99.github.io/" target="_blank" rel="noopener noreferrer">Hyeonho Jeong</a><sup>‡</sup>,
+        <a href="https://yulia.gryaditskaya.com/" target="_blank" rel="noopener noreferrer">Yulia Gryaditskaya</a><sup>‡</sup>,
+        <a href="https://www.kth.se/profile/chpeters" target="_blank" rel="noopener noreferrer">Christopher E. Peters</a><sup>†</sup>,
+        <a href="https://paulchhuang.wixsite.com/chhuang" target="_blank" rel="noopener noreferrer">Chun-Hao Paul Huang</a><sup>‡</sup>,
+        <a href="https://paulguerrero.net/" target="_blank" rel="noopener noreferrer">Paul Guerrero</a><sup>‡</sup>
       </p>
       <div class="affiliation-grid">
         <div class="aff-item">
           <img src="https://chhatrekiran.github.io/tn/logos/kth_logo.png" alt="KTH logo">
           <p class="affiliation-links">
-            <a href="https://www.kth.se/en" target="_blank" rel="noopener noreferrer">KTH Royal Institute of Technology</a>
+            <a href="https://www.kth.se/en" target="_blank" rel="noopener noreferrer"><sup>†</sup> KTH Royal Institute of Technology</a>
           </p>
         </div>
         <div class="aff-item">
           <img src="https://chhatrekiran.github.io/tn/logos/adobe_logo.png" alt="Adobe Research logo">
           <p class="affiliation-links">
-            <a href="https://research.adobe.com/" target="_blank" rel="noopener noreferrer">Adobe Research</a>
+            <a href="https://research.adobe.com/" target="_blank" rel="noopener noreferrer"><sup>‡</sup> Adobe Research</a>
           </p>
         </div>
       </div>
@@ -557,11 +568,14 @@
     <section id="bibtex">
       <h2>BibTeX</h2>
       <div class="same-width-wrap">
-        <pre id="bibtexBlock">@article{trajectorymover_2026,
-  title   = {TrajectoryMover: Generative Movement of Object Trajectories in Videos},
-  author  = {To be added},
-  journal = {To be added},
-  year    = {2026}
+        <pre id="bibtexBlock">@misc{chhatre2026trajectorymovergenerativemovementobject,
+  title={TrajectoryMover: Generative Movement of Object Trajectories in Videos}, 
+  author={Kiran Chhatre and Hyeonho Jeong and Yulia Gryaditskaya and Christopher E. Peters and Chun-Hao Paul Huang and Paul Guerrero},
+  year={2026},
+  eprint={2603.29092},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2603.29092}, 
 }</pre>
         <button id="copyBibtexBtn" class="copy-bib-btn" type="button">Copy BibTeX</button>
       </div>
@@ -611,6 +625,25 @@
       "drop", "drop + drag", "drop", "throw", "drop", "drop"
     ];
 
+    const realBaselineCases = [
+      "motion trajectory: real world case 1",
+      "motion trajectory: real world case 2",
+      "motion trajectory: real world case 3",
+      "motion trajectory: real world case 4",
+      "motion trajectory: real world case 5",
+      "motion trajectory: real world case 6",
+      "motion trajectory: real world case 7",
+      "motion trajectory: real world case 8"
+    ];
+
+    const realAdditionalCases = [
+      "real world case 1",
+      "real world case 2",
+      "real world case 3",
+      "real world case 4",
+      "real world case 5"
+    ];
+
     const originalItems = originalMotions.map((motion, idx) => {
       const id = idx + 1;
       return { id: pad3(id), file: pad3(id), motion };
@@ -636,9 +669,19 @@
       return { id: pad3(id), file: pad3(id), motion };
     });
 
+    const baselineRealItems = realBaselineCases.map((motion, idx) => {
+      const id = idx + 1;
+      return { id: pad3(id), file: pad3(id), motion };
+    });
+
+    const additionalRealItems = realAdditionalCases.map((motion, idx) => {
+      const id = idx + 1;
+      return { id: pad3(id), file: pad3(id), motion };
+    });
+
     const tabs = {
       original: {
-        label: "Original Data",
+        label: "Original Data (Synthetic videos)",
         title: "Original Data",
         desc: "Ground truth source-target pairs and occluded segmentation channels.",
         folder: "original",
@@ -649,7 +692,7 @@
         items: originalItems
       },
       baselines: {
-        label: "Baselines",
+        label: "Baselines (Synthetic videos)",
         title: "Baselines",
         desc: "Comparison against <a href=\"https://anytraj.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">ATI</a>, <a href=\"https://igl-hkust.github.io/das/\" target=\"_blank\" rel=\"noopener noreferrer\">DaS</a>, <a href=\"https://i2vedit.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">I2VEdit</a>, <a href=\"https://shapeformotion.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">SFM</a>, and <a href=\"https://ali-vilab.github.io/VACE-Page/\" target=\"_blank\" rel=\"noopener noreferrer\">VACE</a>.",
         folder: "baselines",
@@ -661,7 +704,7 @@
         items: baselineItems
       },
       ours: {
-        label: "Additional Our Results",
+        label: "Additional Synthetic videos",
         title: "Additional Our Results",
         desc: "Additional TrajectoryMover results with input displacement control signal.",
         folder: "ours",
@@ -682,12 +725,37 @@
           ["w/o scene mod.", "only scene mod.", "only primitives"]
         ],
         items: ablationItems
+      },
+      baselinesReal: {
+        label: "Baselines (Real Videos)",
+        title: "Baselines (Real Videos)",
+        desc: "Comparison against <a href=\"https://anytraj.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">ATI</a>, <a href=\"https://igl-hkust.github.io/das/\" target=\"_blank\" rel=\"noopener noreferrer\">DaS</a>, <a href=\"https://i2vedit.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">I2VEdit</a>, <a href=\"https://eyeline-labs.github.io/Go-with-the-Flow/\" target=\"_blank\" rel=\"noopener noreferrer\">GWTF</a>, <a href=\"https://ali-vilab.github.io/VACE-Page/\" target=\"_blank\" rel=\"noopener noreferrer\">VACE</a>, <a href=\"https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B\" target=\"_blank\" rel=\"noopener noreferrer\">WAN 2.1 T2V Prior</a>, and TrajectoryMover on real videos.",
+        folder: "baselines_real",
+        panelCols: 4,
+        panelRows: [
+          ["GT source video", "ATI result", "DaS result", "I2VEdit result"],
+          ["GWTF result", "VACE result", "WAN 2.1 T2V Prior result", "TrajectoryMover (Ours)"]
+        ],
+        items: baselineRealItems,
+        listCols: 1,
+        pageSize: 4
+      },
+      additionalReal: {
+        label: "Additional Real Videos",
+        title: "Additional Real Videos",
+        desc: "Additional real-world TrajectoryMover results with condition, source, and generated trajectories.",
+        folder: "ours_real",
+        panelCols: 3,
+        panelRows: [
+          ["Condition", "Source", "Generated"]
+        ],
+        items: additionalRealItems
       }
     };
 
     const tabButtons = document.getElementById("tabButtons");
     const tabContent = document.getElementById("tabContent");
-    const VIDEOS_STEP = 4;
+    const DEFAULT_VIDEOS_STEP = 4;
 
     function renderButtons(activeKey) {
       tabButtons.innerHTML = "";
@@ -722,8 +790,9 @@
       return grid;
     }
 
-    function renderTab(activeKey, visibleCount = VIDEOS_STEP) {
+    function renderTab(activeKey, visibleCount = null) {
       const tab = tabs[activeKey];
+      const pageSize = tab.pageSize || DEFAULT_VIDEOS_STEP;
       const wrap = document.createElement("div");
 
       const head = document.createElement("div");
@@ -733,9 +802,11 @@
 
       const list = document.createElement("div");
       list.className = "video-list";
+      list.style.setProperty("--video-cols", String(tab.listCols || 1));
 
       const totalItems = tab.items.length;
-      const shownCount = Math.min(Math.max(visibleCount, VIDEOS_STEP), totalItems);
+      const requestedVisible = visibleCount == null ? pageSize : visibleCount;
+      const shownCount = Math.min(Math.max(requestedVisible, pageSize), totalItems);
       const itemsToShow = tab.items.slice(0, shownCount);
 
       itemsToShow.forEach((item) => {
@@ -784,7 +855,7 @@
 
       wrap.appendChild(list);
 
-      if (totalItems > VIDEOS_STEP) {
+      if (totalItems > pageSize) {
         const controls = document.createElement("div");
         controls.className = "load-more-wrap";
 
@@ -794,19 +865,19 @@
           showMoreButton.className = "load-more-btn";
           showMoreButton.textContent = "Show More";
           showMoreButton.addEventListener("click", () => {
-            const nextCount = Math.min(shownCount + VIDEOS_STEP, totalItems);
+            const nextCount = Math.min(shownCount + pageSize, totalItems);
             renderTab(activeKey, nextCount);
           });
           controls.appendChild(showMoreButton);
         }
 
-        if (shownCount > VIDEOS_STEP) {
+        if (shownCount > pageSize) {
           const collapseButton = document.createElement("button");
           collapseButton.type = "button";
           collapseButton.className = "load-more-btn";
           collapseButton.textContent = "Collapse";
           collapseButton.addEventListener("click", () => {
-            renderTab(activeKey, VIDEOS_STEP);
+            renderTab(activeKey, pageSize);
           });
           controls.appendChild(collapseButton);
         }
@@ -820,7 +891,7 @@
     function activateTab(key) {
       const selected = tabs[key] ? key : "original";
       renderButtons(selected);
-      renderTab(selected, VIDEOS_STEP);
+      renderTab(selected, null);
       const cleanUrl = window.location.pathname + window.location.search;
       history.replaceState(null, "", selected === "original" ? cleanUrl : cleanUrl + "#" + selected);
     }
