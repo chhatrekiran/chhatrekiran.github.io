@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generative Movement of Object Trajectories in Videos</title>
+  <meta name="description" content="TrajectoryMover project page">
+  <meta property="og:description" content="TrajectoryMover project page">
+  <meta name="twitter:description" content="TrajectoryMover project page">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=3">
+  <link rel="shortcut icon" href="favicon.ico?v=3">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #1f1f1f;
+      --muted: #4f5560;
+      --line: #d9d9d6;
+      --accent: #2459a6;
+      --accent-soft: #eaf0fb;
+      --panel-bg: #ececea;
+      --video-bg: #101218;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: 95vw;
+      margin: 0 auto;
+      padding: 22px 0 50px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .hero-logo {
+      width: min(560px, 86vw);
+      height: auto;
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    h1 {
+      font-family: "Sora", "IBM Plex Sans", sans-serif;
+      font-size: clamp(1.65rem, 3.6vw, 2.5rem);
+      line-height: 1.2;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .hero-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .hero-link-btn {
+      display: inline-block;
+      background-color: #000000;
+      color: #ffffff;
+      padding: 9px 18px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      transition: all 0.3s ease;
+      border: 1px solid #000000;
+    }
+
+    .hero-link-content {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-link-icon {
+      width: 14px;
+      height: 14px;
+      display: inline-block;
+      object-fit: contain;
+    }
+
+    .hero-link-btn:hover {
+      background-color: #000000;
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+
+    .authors {
+      font-family: "Sora", "IBM Plex Sans", sans-serif;
+      font-size: clamp(1.05rem, 2.1vw, 1.34rem);
+      line-height: 1.5;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .affiliation-grid {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 64px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .aff-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      min-width: 190px;
+    }
+
+    .aff-item img {
+      height: 92px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .affiliation-links {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    section {
+      margin-top: 24px;
+      padding-top: 20px;
+    }
+
+    h2 {
+      font-family: "Sora", "IBM Plex Sans", sans-serif;
+      font-size: 1.65rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .text {
+      color: #30363f;
+      font-size: 1.03rem;
+    }
+
+    .same-width-wrap {
+      width: min(96vw, 1500px);
+      margin: 0 auto;
+    }
+
+    .abstract-text {
+      font-size: 1.12rem;
+      line-height: 1.75;
+    }
+
+    .figure-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #fff;
+      margin-bottom: 9px;
+    }
+
+    .atlas-wrap {
+      width: min(96vw, 1500px);
+      margin: 0 auto;
+    }
+
+    .atlas-wrap .figure-image {
+      max-width: 100%;
+    }
+
+    .dual-wrap {
+      width: min(96vw, 1500px);
+      margin: 0 auto;
+    }
+
+    .dual-fig {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .dual-fig article {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dual-fig h3 {
+      font-family: "Sora", "IBM Plex Sans", sans-serif;
+      text-align: center;
+      font-size: 1.34rem;
+      margin-bottom: 8px;
+    }
+
+    .dual-fig .figure-image {
+      height: clamp(420px, 38vw, 560px);
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .qual-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .tab-btn {
+      border: 1px solid #000000;
+      background: #000000;
+      color: #ffffff;
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      opacity: 0.72;
+      transform: scale(0.9);
+      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: #000000;
+      color: #ffffff;
+      padding: 11px 18px;
+      font-size: 1.04rem;
+      opacity: 1;
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24);
+    }
+
+    .tab-btn:hover {
+      background: #000000;
+      opacity: 0.9;
+      transform: scale(0.96) translateY(-1px);
+    }
+
+    .tab-btn.active:hover {
+      background: #000000;
+      opacity: 1;
+      transform: scale(1.08) translateY(-1px);
+    }
+
+    .sub-head {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .sub-head p {
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .video-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .video-item {
+      width: 100%;
+    }
+
+    .video-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+      background: var(--video-bg);
+    }
+
+    .panel-grid {
+      margin-top: 8px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .panel-grid.cols-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .panel-grid.cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .panel-cell {
+      background: var(--panel-bg);
+      border: 1px solid #d2d2cf;
+      color: #363d46;
+      text-align: center;
+      padding: 7px 6px;
+      font-size: 0.95rem;
+      line-height: 1.35;
+      min-height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel-cell.empty {
+      background: transparent;
+      border-style: dashed;
+      color: transparent;
+    }
+
+    .note {
+      margin-top: 6px;
+      color: #4f5560;
+      font-size: 0.98rem;
+      text-align: center;
+    }
+
+    .load-more-wrap {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .load-more-btn {
+      border: none;
+      background: #000000;
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .load-more-btn:hover {
+      background: #000000;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    pre {
+      margin-top: 6px;
+      background: #f8f8f7;
+      padding: 12px;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      font-family: "Courier New", Consolas, monospace;
+      color: #343b45;
+      line-height: 1.45;
+    }
+
+    .copy-bib-btn {
+      margin-top: 10px;
+      background: #000000;
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .copy-bib-btn:hover {
+      background: #000000;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .up-btn {
+      position: fixed;
+      right: 22px;
+      bottom: 20px;
+      z-index: 9999;
+      border: none;
+      background: #000000;
+      color: #f5f7fb;
+      border-radius: 999px;
+      padding: 12px 17px;
+      font-size: 1.02rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .up-btn.show {
+      display: inline-block;
+    }
+
+    @media (max-width: 980px) {
+      .dual-wrap {
+        width: 100%;
+      }
+
+      .dual-fig {
+        grid-template-columns: 1fr;
+      }
+
+      .dual-fig .figure-image {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: 96vw;
+      }
+
+      .affiliation-grid {
+        gap: 24px;
+      }
+
+      .aff-item {
+        min-width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <img class="hero-logo" src="assets/Trajmover_logo.png" alt="TrajectoryMover logo">
+      <h1>Generative Movement of Object Trajectories in Videos</h1>
+      <div class="hero-links">
+        <a class="hero-link-btn" href="https://arxiv.org/" target="_blank" rel="noopener noreferrer">
+          <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/arxiv/ffffff" alt="">arxiv</span>
+        </a>
+        <a class="hero-link-btn" href="https://github.com/kiranchhatre/TrajectoryMover" target="_blank" rel="noopener noreferrer">
+          <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/github/ffffff" alt="">github</span>
+        </a>
+        <a class="hero-link-btn" href="#bibtex">
+          <span class="hero-link-content">bibtex</span>
+        </a>
+      </div>
+      <p class="authors">
+        <a href="https://chhatrekiran.github.io/" target="_blank" rel="noopener noreferrer">Kiran Chhatre</a>,
+        <a href="https://hyeonho99.github.io/" target="_blank" rel="noopener noreferrer">Hyeonho Jeong</a>,
+        <a href="https://yulia.gryaditskaya.com/" target="_blank" rel="noopener noreferrer">Yulia Gryaditskaya</a>,
+        <a href="https://www.kth.se/profile/chpeters" target="_blank" rel="noopener noreferrer">Christopher E. Peters</a>,
+        <a href="https://paulchhuang.wixsite.com/chhuang" target="_blank" rel="noopener noreferrer">Chun-Hao Paul Huang</a>,
+        <a href="https://paulguerrero.net/" target="_blank" rel="noopener noreferrer">Paul Guerrero</a>
+      </p>
+      <div class="affiliation-grid">
+        <div class="aff-item">
+          <img src="https://chhatrekiran.github.io/tn/logos/kth_logo.png" alt="KTH logo">
+          <p class="affiliation-links">
+            <a href="https://www.kth.se/en" target="_blank" rel="noopener noreferrer">KTH Royal Institute of Technology</a>
+          </p>
+        </div>
+        <div class="aff-item">
+          <img src="https://chhatrekiran.github.io/tn/logos/adobe_logo.png" alt="Adobe Research logo">
+          <p class="affiliation-links">
+            <a href="https://research.adobe.com/" target="_blank" rel="noopener noreferrer">Adobe Research</a>
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Abstract</h2>
+      <div class="same-width-wrap">
+        <p class="text abstract-text">
+          Generative video editing has enabled several intuitive editing operations for short video clips that would previously have been difficult to achieve, especially for non-expert editors. Existing methods focus on prescribing an object's 3D or 2D motion trajectory in a video, or on altering the appearance of an object or a scene, while preserving both the video's plausibility and identity. Yet a method to move an object's 3D motion trajectory in a video, i.e. moving an object while preserving its relative 3D motion, is currently still missing. The main challenge lies in obtaining paired video data for this scenario. Previous methods typically rely on clever data generation approaches to construct plausible paired data from unpaired videos, but this approach fails if one of the videos in a pair cannot easily be constructed from the other. Instead, we introduce TrajectoryAtlas, a new data generation pipeline for large-scale synthetic paired video data and a video generator TrajectoryMover fine-tuned with this data. We show that this successfully enables generative movement of object trajectories.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>TrajectoryAtlas Data Generation Pipeline</h2>
+      <div class="atlas-wrap">
+        <img class="figure-image" src="assets/figures/data_pipe.png" alt="TrajectoryAtlas data generation pipeline">
+        <p class="text">
+          <strong>TrajectoryAtlas data generation pipeline.</strong>
+          The pipeline has five stages, Asset Cache Preparation, Preflight Validation, Collision Aware Sampling and Scaling, Task Simulation, and Canonical Rendering with Runtime Metadata.
+          Inputs including camera, 3D scene, lights and materials, and Objaverse or primitive assets are converted to reusable collision caches, then skip render preflight selects valid frames.
+          Paired A/B placements with shared scale are filtered by visibility, support normal, and penetration clearance, and optional no hit processing removes only non structural obstacles in the trajectory corridor.
+          Throw, drop, roll, and drag trajectories are simulated with Bullet and rendered with Blender into canonical RGB and binary segmentation videos.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="dual-wrap">
+        <div class="dual-fig">
+          <article>
+            <h3>TrajectoryMover Architecture</h3>
+            <img class="figure-image" src="assets/figures/arch_slide2_styled.png" alt="TrajectoryMover architecture">
+            <p class="text">
+              <strong>TrajectoryMover architecture.</strong>
+              We concatenate three latent streams <em>z</em><sub>trj</sub>, <em>z</em><sub>src</sub>, and <em>z</em><sub>bb</sub> before denoising.
+              In the control image, red marks the source box and green marks the target box.
+            </p>
+          </article>
+          <article>
+            <h3>Common Baseline Repurposing Pipeline</h3>
+            <img class="figure-image" src="assets/figures/repurpose_data_pipe.png" alt="Common baseline repurposing pipeline">
+            <p class="text">
+              <strong>Common baseline repurposing pipeline.</strong>
+              We convert each source-target case into method specific controls.
+              We estimate source depth, extract source and target frame 0 masks, lift source object motion to a 3D trajectory proxy, compute the frame 0 displacement <em>E</em>, and re-anchor the trajectory to the target start.
+              Red indicates source localization, green indicates target localization, and trajectory overlays visualize source and re-anchored motion elements used for downstream baseline control conversion.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Qualitative Results</h2>
+      <div class="qual-tabs" id="tabButtons"></div>
+      <div id="tabContent"></div>
+    </section>
+
+    <section id="bibtex">
+      <h2>BibTeX</h2>
+      <div class="same-width-wrap">
+        <pre id="bibtexBlock">@article{trajectorymover_2026,
+  title   = {TrajectoryMover: Generative Movement of Object Trajectories in Videos},
+  author  = {To be added},
+  journal = {To be added},
+  year    = {2026}
+}</pre>
+        <button id="copyBibtexBtn" class="copy-bib-btn" type="button">Copy BibTeX</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Acknowledgements</h2>
+      <div class="same-width-wrap">
+        <p class="text">
+          We thank <a href="https://valentin.deschaintre.fr/" target="_blank" rel="noopener noreferrer">Valentin Deschaintre</a> and
+          <a href="https://iliyan.com/" target="_blank" rel="noopener noreferrer">Iliyan Georgiev</a> for insightful discussions and valuable feedback. We are also grateful to
+          <a href="https://yannickhold.com/" target="_blank" rel="noopener noreferrer">Yannick Hold-Geoffroy</a> and
+          <a href="https://vovakim.com/" target="_blank" rel="noopener noreferrer">Vladimir Kim</a> for their help with the assets used in dataset generation, and to
+          <a href="https://zheninghuang.github.io/" target="_blank" rel="noopener noreferrer">Zhening Huang</a> for support with the model pipeline. The core ideas for this project were developed while Kiran Chhatre was an intern at Adobe Research.
+        </p>
+      </div>
+    </section>
+
+    <p class="footer-note">TrajectoryMover project 2026. All rights reserved.</p>
+  </main>
+  <button id="upBtn" class="up-btn" type="button" aria-label="Scroll to top">Up</button>
+
+  <script>
+    function pad3(num) {
+      return String(num).padStart(3, "0");
+    }
+
+    const originalMotions = [
+      "throw", "throw", "drop", "drag", "roll", "drag", "throw", "drop", "drop",
+      "drag", "drag", "drop", "placement static", "roll", "drop", "drag", "throw", "drag"
+    ];
+
+    const baselineMotions = [
+      "drop", "drop + drag", "drop + drag", "drop + drag", "throw", "drop + drag",
+      "throw", "drop + drag", "drop", "throw", "drop", "drop"
+    ];
+
+    const oursMotions = [
+      "drop", "drop", "drop + drag", "drop", "drop + drag", "placement static", "drop + drag",
+      "drop + drag", "placement static", "throw", "placement static", "drop", "drop + drag",
+      "drop", "placement static", "drop + drag", "drop + drag", "placement static", "drop",
+      "placement static", "placement static", "drop + drag", "drop"
+    ];
+
+    const ablationMotions = [
+      "drop", "drop", "drop + drag", "drop", "drop + drag", "throw", "drop + drag",
+      "drop", "drop + drag", "drop", "throw", "drop", "drop"
+    ];
+
+    const originalItems = originalMotions.map((motion, idx) => {
+      const id = idx + 1;
+      return { id: pad3(id), file: pad3(id), motion };
+    });
+
+    const baselineItems = baselineMotions.map((motion, idx) => {
+      const id = idx + 1;
+      const fileId = idx + 2; // Skip baselines/001.mp4
+      return { id: pad3(id), file: pad3(fileId), motion };
+    });
+
+    const oursFiles = [
+      "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011",
+      "012", "013", "014", "015", "016", "017", "018", "019", "020", "021", "022", "023"
+    ];
+
+    const oursItems = oursMotions.map((motion, idx) => {
+      return { id: pad3(idx + 1), file: oursFiles[idx], motion };
+    });
+
+    const ablationItems = ablationMotions.map((motion, idx) => {
+      const id = idx + 1;
+      return { id: pad3(id), file: pad3(id), motion };
+    });
+
+    const tabs = {
+      original: {
+        label: "Original Data",
+        title: "Original Data",
+        desc: "Ground truth source-target pairs and occluded segmentation channels.",
+        folder: "original",
+        panelCols: 4,
+        panelRows: [
+          ["Source RGB", "Target RGB", "Source Segmentation Mask (Occlusion aware)", "Target Segmentation Mask (Occlusion aware)"]
+        ],
+        items: originalItems
+      },
+      baselines: {
+        label: "Baselines",
+        title: "Baselines",
+        desc: "Comparison against <a href=\"https://anytraj.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">ATI</a>, <a href=\"https://igl-hkust.github.io/das/\" target=\"_blank\" rel=\"noopener noreferrer\">DaS</a>, <a href=\"https://i2vedit.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">I2VEdit</a>, <a href=\"https://shapeformotion.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">SFM</a>, and <a href=\"https://ali-vilab.github.io/VACE-Page/\" target=\"_blank\" rel=\"noopener noreferrer\">VACE</a>.",
+        folder: "baselines",
+        panelCols: 4,
+        panelRows: [
+          ["GT source video", "ATI result", "DaS result", "I2VEdit result"],
+          ["SFM result", "VACE result", "TrajectoryMover (Ours)", ""]
+        ],
+        items: baselineItems
+      },
+      ours: {
+        label: "Additional Our Results",
+        title: "Additional Our Results",
+        desc: "Additional TrajectoryMover results with input displacement control signal.",
+        folder: "ours",
+        panelCols: 3,
+        panelRows: [
+          ["Displacement control signal", "Source", "Generated"]
+        ],
+        items: oursItems
+      },
+      ablations: {
+        label: "Ablations",
+        title: "Ablations",
+        desc: "Ablation comparisons for only primitives, only scene modification, w/o scene modification, and Drop-only trajectory training.",
+        folder: "ablations",
+        panelCols: 3,
+        panelRows: [
+          ["GT source video", "TrajectoryMover (Ours)", "Drop-only"],
+          ["w/o scene mod.", "only scene mod.", "only primitives"]
+        ],
+        items: ablationItems
+      }
+    };
+
+    const tabButtons = document.getElementById("tabButtons");
+    const tabContent = document.getElementById("tabContent");
+    const VIDEOS_STEP = 4;
+
+    function renderButtons(activeKey) {
+      tabButtons.innerHTML = "";
+      Object.keys(tabs).forEach((key) => {
+        const btn = document.createElement("button");
+        btn.className = "tab-btn" + (key === activeKey ? " active" : "");
+        btn.type = "button";
+        btn.textContent = tabs[key].label;
+        btn.dataset.key = key;
+        tabButtons.appendChild(btn);
+      });
+    }
+
+    function buildPanelGrid(tab) {
+      const grid = document.createElement("div");
+      grid.className = "panel-grid cols-" + tab.panelCols;
+
+      tab.panelRows.forEach((row) => {
+        row.forEach((cellLabel) => {
+          const cell = document.createElement("div");
+          cell.className = "panel-cell";
+          if (!cellLabel || !cellLabel.trim()) {
+            cell.classList.add("empty");
+            cell.textContent = "-";
+          } else {
+            cell.textContent = cellLabel;
+          }
+          grid.appendChild(cell);
+        });
+      });
+
+      return grid;
+    }
+
+    function renderTab(activeKey, visibleCount = VIDEOS_STEP) {
+      const tab = tabs[activeKey];
+      const wrap = document.createElement("div");
+
+      const head = document.createElement("div");
+      head.className = "sub-head";
+      head.innerHTML = "<p>" + tab.desc + "</p>";
+      wrap.appendChild(head);
+
+      const list = document.createElement("div");
+      list.className = "video-list";
+
+      const totalItems = tab.items.length;
+      const shownCount = Math.min(Math.max(visibleCount, VIDEOS_STEP), totalItems);
+      const itemsToShow = tab.items.slice(0, shownCount);
+
+      itemsToShow.forEach((item) => {
+        const card = document.createElement("article");
+        card.className = "video-item";
+
+        const top = document.createElement("div");
+        top.className = "video-title";
+        top.textContent = "Motion trajectory: " + item.motion;
+        card.appendChild(top);
+
+        if (tab.panelRows.length > 1) {
+          const topGridTab = {
+            panelCols: tab.panelCols,
+            panelRows: [tab.panelRows[0]]
+          };
+          card.appendChild(buildPanelGrid(topGridTab));
+        }
+
+        const video = document.createElement("video");
+        video.controls = true;
+        video.preload = "metadata";
+        video.playsInline = true;
+        video.src = "assets/videos/" + tab.folder + "/" + item.file + ".mp4";
+        card.appendChild(video);
+
+        if (tab.panelRows.length > 1) {
+          const bottomGridTab = {
+            panelCols: tab.panelCols,
+            panelRows: [tab.panelRows[1]]
+          };
+          card.appendChild(buildPanelGrid(bottomGridTab));
+        } else {
+          card.appendChild(buildPanelGrid(tab));
+        }
+
+        if (item.note) {
+          const note = document.createElement("div");
+          note.className = "note";
+          note.textContent = "Note: " + item.note;
+          card.appendChild(note);
+        }
+
+        list.appendChild(card);
+      });
+
+      wrap.appendChild(list);
+
+      if (totalItems > VIDEOS_STEP) {
+        const controls = document.createElement("div");
+        controls.className = "load-more-wrap";
+
+        if (shownCount < totalItems) {
+          const showMoreButton = document.createElement("button");
+          showMoreButton.type = "button";
+          showMoreButton.className = "load-more-btn";
+          showMoreButton.textContent = "Show More";
+          showMoreButton.addEventListener("click", () => {
+            const nextCount = Math.min(shownCount + VIDEOS_STEP, totalItems);
+            renderTab(activeKey, nextCount);
+          });
+          controls.appendChild(showMoreButton);
+        }
+
+        if (shownCount > VIDEOS_STEP) {
+          const collapseButton = document.createElement("button");
+          collapseButton.type = "button";
+          collapseButton.className = "load-more-btn";
+          collapseButton.textContent = "Collapse";
+          collapseButton.addEventListener("click", () => {
+            renderTab(activeKey, VIDEOS_STEP);
+          });
+          controls.appendChild(collapseButton);
+        }
+
+        wrap.appendChild(controls);
+      }
+
+      tabContent.replaceChildren(wrap);
+    }
+
+    function activateTab(key) {
+      const selected = tabs[key] ? key : "original";
+      renderButtons(selected);
+      renderTab(selected, VIDEOS_STEP);
+      const cleanUrl = window.location.pathname + window.location.search;
+      history.replaceState(null, "", selected === "original" ? cleanUrl : cleanUrl + "#" + selected);
+    }
+
+    tabButtons.addEventListener("click", (event) => {
+      const target = event.target.closest(".tab-btn");
+      if (!target) {
+        return;
+      }
+      activateTab(target.dataset.key);
+    });
+
+    const start = window.location.hash.replace("#", "");
+    activateTab(start || "original");
+
+    const upBtn = document.getElementById("upBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        upBtn.classList.add("show");
+      } else {
+        upBtn.classList.remove("show");
+      }
+    });
+    upBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const copyBibtexBtn = document.getElementById("copyBibtexBtn");
+    const bibtexBlock = document.getElementById("bibtexBlock");
+    if (copyBibtexBtn && bibtexBlock) {
+      copyBibtexBtn.addEventListener("click", async () => {
+        const text = bibtexBlock.textContent.trim();
+        let copied = false;
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (err) {
+          const area = document.createElement("textarea");
+          area.value = text;
+          area.style.position = "fixed";
+          area.style.left = "-99999px";
+          area.style.top = "-99999px";
+          document.body.appendChild(area);
+          area.focus();
+          area.select();
+          copied = document.execCommand("copy");
+          document.body.removeChild(area);
+        }
+
+        if (copied) {
+          const old = copyBibtexBtn.textContent;
+          copyBibtexBtn.textContent = "Copied";
+          setTimeout(() => {
+            copyBibtexBtn.textContent = old;
+          }, 1200);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
