@@ -149,18 +149,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 25px;
-      margin: 30px 0;
-      padding: 20px;
-      flex-wrap: nowrap;
+      column-gap: 16px;
+      row-gap: 12px;
+      margin: 22px 0;
+      padding: 12px 4px;
+      flex-wrap: wrap;
       max-width: 100%;
-      overflow-x: auto;
+      overflow-x: hidden;
     }
     
     .logo-item {
-      height: 50px;
+      height: 46px;
       width: auto;
-      max-width: 120px;
+      max-width: 112px;
       object-fit: contain;
       filter: grayscale(30%);
       transition: filter 0.3s ease;
@@ -172,18 +173,18 @@
     }
     
     .logo-item.sony-small {
-      height: 25px;
-      max-width: 70px;
+      height: 23px;
+      max-width: 66px;
     }
     
     .logo-item.kth-large {
-      height: 60px;
-      max-width: 140px;
+      height: 56px;
+      max-width: 128px;
     }
     
     .logo-item.small {
-      height: 40px;
-      max-width: 100px;
+      height: 38px;
+      max-width: 92px;
     }
     
     .research-highlight {
@@ -339,7 +340,7 @@
           'all': [],
           '3d-humans': ['AMUSE:', 'EMOTE:', 'Spatio-temporal'],
           'hci': ['Synthetically Expressive:', 'Evaluation of Generative Models', 'Towards Reliable Human Evaluations'],
-          'vlm': ['Spectrum:', 'Audiopedia:'],
+          'vlm': ['TrajectoryMover:', 'Spectrum:', 'Audiopedia:'],
           'speech': ['AMUSE:', 'Audiopedia:'],
           'other': ['Computer-Aided', 'BEAMBayesOpt:', 'Rethinking Computer-Aided']
         };
@@ -443,7 +444,7 @@
                 <audio id="nameAudio" src="../media/name.mp3"></audio>
               </h1>
               <p style="text-align: justify;">
-                I am an <a href="https://www.clipe-itn.eu/">MSCA ITN PhD fellow</a> at the <a href="https://www.kth.se/en">KTH Royal Institute of Technology</a> (2021.01 – Present), where I am advised by <a href="https://www.kth.se/profile/chpeters">Christopher Peters</a>. During my PhD, I have had the opportunity to work closely with <a href="https://ps.is.mpg.de/person/black">Michael J. Black</a>, <a href="https://sites.google.com/site/bolkartt/">Timo Bolkart</a>, <a href="https://research.adobe.com/person/srikrishna-karanam/">Srikrishna Karanam</a>, and <a href="https://en.wikipedia.org/wiki/Jun_Rekimoto">Jun Rekimoto</a>. I have also gained valuable experience as a PhD intern at <a href="https://research.adobe.com/">Adobe Research</a>, <a href="https://www.sonycsl.co.jp/en/">Sony Computer Science Laboratories</a>, the <a href="https://ps.is.mpg.de/">Max Planck Institute for Intelligent Systems (Perceiving Systems)</a>, <a href="https://www.ea.com/seed">Electronic Arts (SEED)</a>, and <a href="https://www.ubisoft.com/en-us/studio/laforge">Ubisoft La Forge</a>. 
+                I am an <a href="https://www.clipe-itn.eu/">MSCA ITN PhD fellow</a> at the <a href="https://www.kth.se/en">KTH Royal Institute of Technology</a> (2021.01 – Present), where I am advised by <a href="https://www.kth.se/profile/chpeters">Christopher Peters</a>. During my PhD, I have had the opportunity to work closely with <a href="https://ps.is.mpg.de/person/black">Michael J. Black</a>, <a href="https://sites.google.com/site/bolkartt/">Timo Bolkart</a>, <a href="https://research.adobe.com/person/srikrishna-karanam/">Srikrishna Karanam</a>, <a href="https://paulguerrero.net/">Paul Guerrero</a>, and <a href="https://paulchhuang.wixsite.com/chhuang">Chun-Hao Paul Huang</a>. I have also gained valuable experience as a PhD intern at <a href="https://research.adobe.com/">Adobe Research</a>, <a href="https://www.sonyresearch.com/">Sony Research</a>, the <a href="https://ps.is.mpg.de/">Max Planck Institute for Intelligent Systems (Perceiving Systems)</a>, <a href="https://www.ea.com/">Electronic Arts</a>, and <a href="https://www.ubisoft.com/en-us/studio/laforge">Ubisoft La Forge</a>. 
               </p>
               <p style="text-align: justify;">
                 Prior to my PhD, I worked as a Research Affiliate with the <a href="https://transportation.lbl.gov/beam">BEAM team</a> at <a href="https://www.lbl.gov/">Lawrence Berkeley National Laboratory</a>. I earned my <a href="https://www.academy.rwth-aachen.de/en/programs/masters-degree-programs/detail/msc-computer-aided-conception-and-production-in-mechanical-engineering">Master’s degree in Mechanical Engineering</a> from <a href="https://www.rwth-aachen.de/">RWTH Aachen University</a> (2017.09 – 2020.10), where I was advised by <a href="https://www.km.rwth-aachen.de/cms/KM/Das-Lehr-und-Forschungsgebiet/Team/Leitung/~qpvr/Mikhail-Itskov/lidx/1/">Mikhail Itskov</a>. During my master’s studies, I interned with <a href="https://research.ibm.com/">IBM Research</a>, <a href="https://www.3ds.com/products/simulia">Dassault Systèmes (SIMULIA)</a>, and the <a href="https://www.mckinsey.com/capabilities/operations/how-we-help-clients/innovation-and-learning-centers/our-centers/aachen">Innovation & Learning Center Aachen</a>. Before that, I worked at <a href="https://www.3ds.com/">Dassault Systèmes Solutions Lab</a> and <a href="https://www.autocoptrackpro.com/">Autocop Telematics</a>, and I completed my <a href="https://www.coeptech.ac.in/academics/schools/school-of-engineering-and-technology/school-of-mechanical-and-materials-engineering/">Bachelor’s degree in Mechanical Engineering</a> at <a href="https://www.coeptech.ac.in/">COEP Technological University</a> (2010.07 – 2014.05).
@@ -491,9 +492,10 @@
                 <img src="/tn/logos/kth_logo.png" alt="KTH Royal Institute of Technology" class="logo-item kth-large" />
                 <img src="/tn/logos/mpi_logo.png" alt="Max Planck Institute for Intelligent Systems" class="logo-item" />
                 <img src="/tn/logos/rwth-logo-png-transparent.png" alt="RWTH Aachen University" class="logo-item" />
+                <img src="/tn/logos/meta_symbol.png" alt="Meta" class="logo-item" />
                 <img src="/tn/logos/adobe_logo.png" alt="Adobe Research" class="logo-item" />
-                <img src="/tn/logos/Sony_logo.svg.png" alt="Sony Computer Science Laboratories" class="logo-item sony-small" />
-                <img src="/tn/logos/ea_logo.svg" alt="Electronic Arts SEED" class="logo-item small" />
+                <img src="/tn/logos/Sony_logo.svg.png" alt="Sony Research" class="logo-item sony-small" />
+                <img src="/tn/logos/ea_logo.svg" alt="Electronic Arts" class="logo-item small" />
                 <img src="/tn/logos/ubisoft_logo.png" alt="Ubisoft La Forge" class="logo-item small" />
                 <img src="/tn/logos/ibm_logo.jpg" alt="IBM Research" class="logo-item small" />
                 <img src="/tn/logos/berkeley_logo.jpg" alt="Lawrence Berkeley National Laboratory" class="logo-item" />
@@ -508,11 +510,7 @@
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Research</h2>
               <p style="text-align: justify;">
-                My research lies at the intersection of computer vision and machine learning, particularly focused on the <span class="research-highlight">controllability of generative models</span> across various modalities (<span class="research-highlight">image, video, 3D, 4D</span>). I have broadly worked on <span class="research-highlight">foundation model post-training</span> for visual grounding and audio reasoning, <span class="research-highlight">synthetic 3D and 4D physics interaction data generation</span>, and <span class="research-highlight">emotional 3D animation of virtual humans</span> with applications in <span class="research-highlight">VR</span>-based human–computer interaction (<span class="research-highlight">HCI</span>). Previously, I explored Bayesian optimization for <span class="research-highlight">multi-agent systems</span>, robotics, and computer-aided engineering.
-              </p>
-              
-              <p>
-                ▸ Currently at <a href="https://research.adobe.com/">Adobe Research London</a> with <a href="https://paulguerrero.net/">Paul</a>, <a href="https://paulchhuang.wixsite.com/chhuang">Chun-Hao</a>, <a href="https://yulia.gryaditskaya.com/">Yulia</a>, and <a href="https://hyeonho99.github.io/">Hyeonho</a>, working on video foundation models.
+                My research lies at the intersection of computer vision and machine learning, particularly focused on the <span class="research-highlight">controllability of generative models</span> across various modalities (<span class="research-highlight">image, video, 3D, 4D</span>). I have broadly worked on <span class="research-highlight">foundation model post-training</span> for video-to-video editing, visual grounding, and audio reasoning, <span class="research-highlight">synthetic 3D and 4D physics interaction data generation</span>, and <span class="research-highlight">emotional 3D animation of virtual humans</span> with applications in <span class="research-highlight">VR</span>-based human–computer interaction (<span class="research-highlight">HCI</span>). Previously, I explored Bayesian optimization for <span class="research-highlight">multi-agent systems</span>, robotics, and computer-aided engineering.
               </p>
               
               <!-- Category Filter Buttons -->
@@ -538,10 +536,10 @@
           {% for cat in post.categories %}
           {% if cat == 'research' %}
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:top;min-width:120px">
-              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+              <img src="/tn{{post.image}}" alt="project image" style="display:block;margin:0 auto;width:100%;height:auto;max-width:100%;" />
             </td>
-            <td style="padding:2.5%;width:75%;vertical-align:top">
+            <td style="padding:2.5%;width:75%;vertical-align:middle">
               <h3>{{post.title}}{% if post.title contains "Audiopedia" %}<span class="paper-tag oral">oral</span>{% elsif post.title contains "BEAMBayesOpt" %}<span class="paper-tag journal">special mentions</span>{% elsif post.title contains "Synthetically Expressive" %}<span class="paper-tag oral">best paper award</span>{% endif %}</h3>
               <br>
               {{post.authors}}
@@ -613,6 +611,11 @@
       archivePrefix={arXiv},
       primaryClass={cs.CV},
       url={https://arxiv.org/abs/2508.06032}, 
+}{% elsif post.title contains "TrajectoryMover" %}@article{trajectorymover_2026,
+  title   = {TrajectoryMover: Generative Movement of Object Trajectories in Videos},
+  author  = {To be added},
+  journal = {To be added},
+  year    = {2026}
 }{% elsif post.title contains "Synthetically Expressive" %}@article{du2025synthetically,
   title={Synthetically Expressive: Evaluating gesture and voice for emotion and empathy in VR and 2D scenarios},
   author={Du, Haoyang and Chhatre, Kiran and Peters, Christopher and Keegan, Brian and McDonnell, Rachel and Ennis, Cathy},
@@ -752,4 +755,3 @@ series = {SA '23}
 </body>
 
 </html>
-
