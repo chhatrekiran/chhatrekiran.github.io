@@ -1,0 +1,25 @@
+<tr>
+  <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+    <img src="/tn{{include.post.image}}" alt="project image" style="display:block;margin:0 auto;width:100%;height:auto;max-width:100%;" />
+  </td>
+  <td style="padding:2.5%;width:75%;vertical-align:middle">
+    <h3>{{include.post.title}}{% if include.post.title contains "Audiopedia" %}<span class="paper-tag oral">oral</span>{% elsif include.post.title contains "BEAMBayesOpt" %}<span class="paper-tag journal">special mentions</span>{% elsif include.post.title contains "Synthetically Expressive" %}<span class="paper-tag oral">best paper award</span>{% endif %}</h3>
+    <br>
+    {{include.post.authors}}
+    <br>
+    <em>{{include.post.venue}}</em>, {{ include.post.date | date: "%Y" }}
+    <br>
+    {% include project-links.html post=include.post %}
+    <button class="bibtex-toggle-btn" onclick="toggleBibtex('bibtex-{{include.post.title | slugify}}')">BibTeX</button>
+    <div class="bibtex-container">
+      <pre class="bibtex" id="bibtex-{{include.post.title | slugify}}" style="display: none;">{% include project-bibtex.html post=include.post %}</pre>
+      <button class="copy-btn" onclick="copyBibtex('bibtex-{{include.post.title | slugify}}', this)" style="display: none;" id="copy-{{include.post.title | slugify}}">Copy BibTeX</button>
+    </div>
+    <p></p>
+    {% if include.summary %}
+    {{ include.summary }}
+    {% else %}
+    {{ include.post.excerpt }}
+    {% endif %}
+  </td>
+</tr>

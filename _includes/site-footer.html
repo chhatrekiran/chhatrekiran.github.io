@@ -1,0 +1,49 @@
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tr>
+    <td style="padding:0px;text-align:left;">
+      <br>
+      <p style="font-size:small;">
+        Updated on: {{ site.time | date: "%Y-%m-%d" }}
+      </p>
+    </td>
+    <td style="padding:0px;text-align:right;">
+      <br>
+      <p style="font-size:small;">
+        Thanks, <a style="font-size:small;" href="https://jonbarron.info">Jon Barron</a>!
+      </p>
+    </td>
+  </tr>
+</table>
+</td>
+</tr>
+</table>
+
+<button id="backToTopBtn" class="back-to-top-btn" type="button" aria-label="Back to top">↑</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var backToTopBtn = document.getElementById('backToTopBtn');
+    if (!backToTopBtn) return;
+
+    function toggleBackToTopBtn() {
+      if (window.scrollY > 280) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', toggleBackToTopBtn);
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    toggleBackToTopBtn();
+  });
+</script>
+
+<!-- 100% privacy-first analytics -->
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+</body>
+
+</html>

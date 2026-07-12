@@ -13,4 +13,4 @@ website: https://emote.is.tue.mpg.de/
 video: https://download.is.tue.mpg.de/emote/EMOTE_SupMat_video.mp4
 x: https://x.com/DanecekRadek/status/1734561392877781377
 ---
-Given audio input and an emotion label, EMOTE generates an animated 3D head that has state-of-the-art lip synchronization while expressing the emotion. The method is trained from 2D video sequences using a novel video emotion loss and a mechanism to disentangle emotion from speech.
+A speech-driven 3D facial animation method that generates synchronized and emotionally expressive facial motion from audio and an emotion label.

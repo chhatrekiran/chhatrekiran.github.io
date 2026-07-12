@@ -11,4 +11,4 @@ arxiv: https://arxiv.org/abs/2412.20619
 code: https://github.com/Abhiram4572/Audiopedia
 website: https://abhiram4572.github.io/projects/audiopedia/
 ---
-Audiopedia introduces a novel, knowledge-intensive audio question answering task and proposes a framework to enhance audio language models by integrating external knowledge.
+A knowledge-intensive audio question-answering benchmark and method that improves audio-language models using external knowledge.

@@ -14,4 +14,4 @@ code: https://github.com/kiranchhatre/amuse
 website: https://amuse.is.tue.mpg.de/
 x: https://x.com/ChhatreKiran/status/1802424251875500438
 ---
-AMUSE generates realistic emotional 3D body gestures directly from a speech sequence. It provides user control over the generated emotion by combining the driving speech with a different emotional audio.
+A latent-diffusion model for generating controllable emotional 3D body motion directly from speech.

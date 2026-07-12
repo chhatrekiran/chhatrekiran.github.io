@@ -1,0 +1,54 @@
+---
+permalink: /
+---
+{% include site-head.html page_title=site.name %}
+{% include site-hero.html page_name="home" %}
+
+{% assign featured_titles = "TrajectoryMover: Generative Movement of Object Trajectories in Videos||Spectrum: Learning 3D Texture-Aware Representations for Parsing Diverse Human Clothing and Body Parts||AMUSE: Emotional Speech-driven 3D Body Animation via Disentangled Latent Diffusion||Audiopedia: Audio QA with Knowledge||EMOTE: Emotional Speech-Driven Animation with Content-Emotion Disentanglement" | split: "||" %}
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tr>
+    <td style="padding:2.5%;width:100%;vertical-align:middle">
+      <h2>Research</h2>
+      <p style="text-align: justify;">
+        My research lies at the intersection of computer vision, generative AI, and world models. I work on video generation and editing, multimodal learning, 3D vision, human motion generation, and evaluation of foundation models.
+      </p>
+      <p style="text-align: justify;">
+        My goal is to build models that understand people, objects, interactions, and how scenes evolve over time. My recent work includes social world models, controllable video generation, dense video understanding, physics-based synthetic data, and speech-driven 3D body animation.
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  {% for featured_title in featured_titles %}
+    {% assign featured_post = site.posts | where: "title", featured_title | first %}
+    {% if featured_post %}
+      {% include project-row.html post=featured_post %}
+    {% endif %}
+  {% endfor %}
+</table>
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tr>
+    <td style="padding:0 2.5% 1.5% 2.5%;width:100%;vertical-align:middle">
+      <p style="text-align:center">
+        <a href="research.html">View all research</a> &nbsp;/&nbsp;
+        <a href="cv.html">Full academic CV</a>
+      </p>
+    </td>
+  </tr>
+</table>
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tr>
+    <td style="padding:1.2% 2.5%;width:100%;vertical-align:middle">
+      <h2>Academic Services</h2>
+      <p style="margin:8px 0 0 0;">
+        <strong>Reviewer:</strong> CVPR, ICCV, ECCV, NeurIPS, ICLR, SIGGRAPH, SIGGRAPH Asia, TOG, and TVCG.
+      </p>
+    </td>
+  </tr>
+</table>
+
+{% include site-footer.html %}

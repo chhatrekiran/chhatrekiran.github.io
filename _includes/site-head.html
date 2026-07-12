@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+
+  <!-- Google Analytics 4 (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-23JNZ1YJXC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-23JNZ1YJXC');
+  </script>
+
+  <title>{% if include.page_title %}{{ include.page_title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+  <meta name="author" content="{{ site.name }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link rel="icon" href="../favi.ico" type="image/x-icon">
+
+  <style>
+    .bibtex-toggle-btn {
+      background: none;
+      border: none;
+      color: #1772d0;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: inherit;
+      font-family: inherit;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .bibtex-toggle-btn:hover {
+      text-decoration: underline;
+    }
+    
+    .bibtex {
+      background-color: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 5px;
+      padding: 10px;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 0.7rem;
+      overflow: auto;
+      white-space: pre;
+      line-height: 1.2;
+      max-height: 150px;
+      width: 100%;
+      max-width: 450px;
+      height: 150px;
+      box-sizing: border-box;
+      margin: 8px 0 0 0;
+      position: relative;
+    }
+    
+    .bibtex-container {
+      width: 100%;
+      max-width: 450px;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .copy-btn {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      background-color: #0056cc;
+    }
+    
+    .category-filter-container {
+      text-align: center;
+      margin: 25px 0;
+      padding: 15px;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+    }
+    
+    .category-filter-row {
+      margin: 15px 0;
+      text-align: center;
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .category-filter-row::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-filter-btn {
+      background: none;
+      border: none;
+      color: #1772d0;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: inherit;
+      font-family: inherit;
+      padding: 2px 3px;
+      margin: 0;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .category-filter-btn:hover {
+      text-decoration: underline;
+      background-color: rgba(23, 114, 208, 0.05);
+    }
+    
+    .category-filter-btn.active {
+      color: #333;
+      background-color: rgba(23, 114, 208, 0.08);
+      text-decoration: underline;
+    }
+    
+    .paper-tag {
+      display: inline-block;
+      background-color: #e8e8e8;
+      color: #555;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    
+    .paper-tag.oral {
+      background-color: #d4e6d4;
+      color: #2d5016;
+    }
+    
+    .paper-tag.journal {
+      background-color: #d1e7dd;
+      color: #0f5132;
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      margin: 18px 0;
+      padding: 8px 0;
+      flex-wrap: nowrap;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    .logo-item {
+      width: 64px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+      flex: 0 0 64px;
+      filter: grayscale(30%);
+      transition: filter 0.3s ease;
+    }
+
+    .logo-item.logo-up,
+    .logo-item.logo-down {
+      width: 64px;
+      height: 34px;
+      flex: 0 0 64px;
+    }
+
+    .logo-item.logo-berkeley {
+      width: 92px;
+      flex: 0 0 92px;
+    }
+    
+    .logo-item:hover {
+      filter: grayscale(0%);
+    }
+
+    .back-to-top-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 999px;
+      background-color: #1772d0;
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+      z-index: 999;
+    }
+
+    .back-to-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top-btn:hover {
+      background-color: #0f5fb2;
+    }
+
+    @media (max-width: 768px) {
+      .back-to-top-btn {
+        right: 14px;
+        bottom: 14px;
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+      }
+    }
+    
+    .research-highlight {
+      font-weight: 450;
+      background: linear-gradient(120deg, rgba(23, 114, 208, 0.04) 0%, rgba(23, 114, 208, 0.06) 100%);
+      padding: 1px 3px;
+      border-radius: 3px;
+    }
+  </style>
+
+  <script>
+    function toggleBibtex(id) {
+      var bibtex = document.getElementById(id);
+      var copyBtn = document.getElementById('copy-' + id.replace('bibtex-', ''));
+      
+      if (bibtex.style.display === 'none') {
+        bibtex.style.display = 'block';
+        if (copyBtn) copyBtn.style.display = 'inline-block';
+      } else {
+        bibtex.style.display = 'none';
+        if (copyBtn) copyBtn.style.display = 'none';
+      }
+    }
+    
+    function copyBibtex(id, button) {
+      var bibtexText = button.getAttribute('data-bibtex');
+      
+      if (!bibtexText) {
+        var bibtexElement = document.getElementById(id);
+        if (!bibtexElement) {
+          button.textContent = 'Element not found';
+          button.style.backgroundColor = '#dc3545';
+          setTimeout(function() {
+            button.textContent = 'Copy BibTeX';
+            button.style.backgroundColor = '#007aff';
+          }, 2000);
+          return;
+        }
+        bibtexText = bibtexElement.textContent || bibtexElement.innerText;
+      }
+      
+      bibtexText = bibtexText.trim();
+      
+      if (!bibtexText) {
+        button.textContent = 'No text found';
+        button.style.backgroundColor = '#dc3545';
+        setTimeout(function() {
+          button.textContent = 'Copy BibTeX';
+          button.style.backgroundColor = '#007aff';
+        }, 2000);
+        return;
+      }
+      
+      var textArea = document.createElement('textarea');
+      textArea.value = bibtexText;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        var success = document.execCommand('copy');
+        
+        if (success) {
+          var originalText = button.textContent;
+          button.textContent = 'Copied!';
+          button.style.backgroundColor = '#28a745';
+          setTimeout(function() {
+            button.textContent = originalText;
+            button.style.backgroundColor = '#007aff';
+          }, 2000);
+        } else {
+          throw new Error('execCommand returned false');
+        }
+      } catch (err) {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(bibtexText).then(function() {
+            var originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.style.backgroundColor = '#28a745';
+            setTimeout(function() {
+              button.textContent = originalText;
+              button.style.backgroundColor = '#007aff';
+            }, 2000);
+          }).catch(function() {
+            button.textContent = 'Copy failed';
+            button.style.backgroundColor = '#dc3545';
+            setTimeout(function() {
+              button.textContent = 'Copy BibTeX';
+              button.style.backgroundColor = '#007aff';
+            }, 2000);
+          });
+        } else {
+          button.textContent = 'Copy failed';
+          button.style.backgroundColor = '#dc3545';
+          setTimeout(function() {
+            button.textContent = 'Copy BibTeX';
+            button.style.backgroundColor = '#007aff';
+          }, 2000);
+        }
+      }
+      
+      document.body.removeChild(textArea);
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <!-- NEW Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2HCFJDV"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr style="padding:0px">
+      <td style="padding:0px">

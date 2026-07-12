@@ -1,0 +1,111 @@
+---
+permalink: /research.html
+---
+{% include site-head.html page_title="Research" %}
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tr>
+    <td style="padding:2.5%;width:100%;vertical-align:middle">
+      <h1>Research Projects and Publications</h1>
+      <div class="category-filter-row">
+        <button class="category-filter-btn" onclick="filterProjects('all')" id="filter-all">all</button> /
+        <button class="category-filter-btn" onclick="filterProjects('video-world')" id="filter-video-world">video &amp; world models</button> /
+        <button class="category-filter-btn" onclick="filterProjects('multimodal-ai')" id="filter-multimodal-ai">multimodal AI</button> /
+        <button class="category-filter-btn" onclick="filterProjects('3d-humans')" id="filter-3d-humans">3D humans &amp; motion</button> /
+        <button class="category-filter-btn" onclick="filterProjects('human-centered-ai')" id="filter-human-centered-ai">human-centered AI</button> /
+        <button class="category-filter-btn" onclick="filterProjects('simulation-other')" id="filter-simulation-other">simulation &amp; other</button>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  {% for post in site.posts %}
+  {% for cat in post.categories %}
+  {% if cat == 'research' %}
+  {% include project-row.html post=post %}
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</table>
+
+<script>
+  function filterProjects(category) {
+    try {
+      var categories = {
+        'all': [],
+        'video-world': ['TrajectoryMover:'],
+        'multimodal-ai': ['Spectrum:', 'Audiopedia:'],
+        '3d-humans': ['AMUSE:', 'EMOTE:', 'Spatio-temporal', 'Towards Reliable Human Evaluations'],
+        'human-centered-ai': ['Synthetically Expressive:', 'Evaluation of Generative Models'],
+        'simulation-other': ['BEAMBayesOpt:', 'Computer-Aided', 'Rethinking Computer-Aided']
+      };
+      
+      var projectRows = [];
+      var allTables = document.querySelectorAll('table');
+      var researchTable = null;
+      
+      allTables.forEach(function(table) {
+        var projectImages = table.querySelectorAll('img[alt="project image"]');
+        if (projectImages.length > 0) {
+          researchTable = table;
+        }
+      });
+      
+      if (researchTable) {
+        var rows = researchTable.querySelectorAll('tr');
+        rows.forEach(function(row) {
+          if (row.querySelector('h3') && row.querySelector('img[alt="project image"]')) {
+            projectRows.push(row);
+          }
+        });
+      }
+      
+      var buttons = document.querySelectorAll('.category-filter-btn');
+      buttons.forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      
+      var activeButton = document.getElementById('filter-' + category);
+      if (activeButton) {
+        activeButton.classList.add('active');
+      }
+      
+      projectRows.forEach(function(row) {
+        var titleElement = row.querySelector('h3');
+        if (titleElement) {
+          var title = titleElement.textContent.trim();
+          var shouldShow = false;
+          
+          if (category === 'all') {
+            shouldShow = true;
+          } else {
+            var categoryProjects = categories[category];
+            if (categoryProjects && categoryProjects.length > 0) {
+              shouldShow = categoryProjects.some(function(projectName) {
+                return title.includes(projectName);
+              });
+            }
+          }
+          
+          row.style.display = shouldShow ? '' : 'none';
+        }
+      });
+    } catch (error) {
+      console.error('Error in filterProjects:', error);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var allButton = document.getElementById('filter-all');
+      if (allButton) {
+        allButton.classList.add('active');
+      }
+    } catch (error) {
+      console.error('Error initializing filters:', error);
+    }
+  });
+</script>
+
+{% include site-footer.html %}
