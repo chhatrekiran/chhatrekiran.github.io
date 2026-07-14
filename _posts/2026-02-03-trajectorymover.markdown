@@ -2,6 +2,8 @@
 layout: post
 title:  "TrajectoryMover: Generative Movement of Object Trajectories in Videos"
 date:   2026-02-03 00:00:00 +00:00
+# Reserve /trajectorymover/ for the standalone project website.
+permalink: /publications/trajectorymover/
 image: /images/trajectorymover_seq_tb_clean.gif
 categories: research
 author:
