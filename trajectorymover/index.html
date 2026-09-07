@@ -237,149 +237,224 @@
 
     .qual-tabs {
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 14px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 8px;
+      margin: 0 0 24px;
+      overflow-x: auto;
+      padding: 4px 0;
+      scrollbar-width: thin;
     }
 
     .tab-btn {
-      border: 1px solid #000000;
-      background: #000000;
-      color: #ffffff;
-      padding: 8px 13px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      color: var(--ink);
       border-radius: 999px;
+      padding: 8px 12px;
       font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 700;
+      font-size: 0.78rem;
+      font-weight: 600;
       cursor: pointer;
-      opacity: 0.72;
-      transform: scale(0.9);
-      transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+      flex: 0 0 auto;
+      min-width: 0;
+      white-space: nowrap;
+      transition: background 0.14s ease, border-color 0.14s ease, color 0.14s ease;
     }
 
     .tab-btn.active {
       background: #000000;
       color: #ffffff;
-      padding: 11px 18px;
-      font-size: 1.04rem;
-      opacity: 1;
-      transform: scale(1.08);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24);
+      border-color: #000000;
     }
 
     .tab-btn:hover {
-      background: #000000;
-      opacity: 0.9;
-      transform: scale(0.96) translateY(-1px);
+      border-color: #9da3ad;
     }
 
     .tab-btn.active:hover {
-      background: #000000;
-      opacity: 1;
-      transform: scale(1.08) translateY(-1px);
+      border-color: #000000;
     }
 
-    .sub-head {
-      text-align: center;
-      margin-bottom: 12px;
-    }
-
-    .sub-head p {
-      color: var(--muted);
-      font-size: 1.12rem;
-    }
-
-    .video-list {
-      display: grid;
-      grid-template-columns: repeat(var(--video-cols, 1), minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .video-item {
-      width: 100%;
-    }
-
-    .video-title {
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-size: 1.08rem;
-      text-align: center;
-    }
-
-    video {
-      width: 100%;
+    .tab-btn-label {
       display: block;
-      background: var(--video-bg);
+      line-height: 1.25;
     }
 
-    .panel-grid {
-      margin-top: 8px;
-      display: grid;
-      gap: 6px;
+    .tab-btn-count {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink);
+      font-size: 0.9rem;
+      font-weight: 800;
     }
 
-    .panel-grid.cols-4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .tab-btn.active .tab-btn-count {
+      color: #ffffff;
     }
 
-    .panel-grid.cols-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .panel-cell {
-      background: var(--panel-bg);
-      border: 1px solid #d2d2cf;
-      color: #363d46;
+    .results-note {
+      width: min(980px, 100%);
+      margin: 0 auto 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.5;
       text-align: center;
-      padding: 7px 6px;
-      font-size: 0.95rem;
-      line-height: 1.35;
-      min-height: 34px;
+    }
+
+    .tab-wrap {
+      padding: 0;
+    }
+
+    .tab-head {
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .tab-head h3 {
+      font-family: "Sora", "IBM Plex Sans", sans-serif;
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .tab-count {
+      margin-top: 6px;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .cards {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pager {
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .panel-cell.empty {
-      background: transparent;
-      border-style: dashed;
-      color: transparent;
-    }
-
-    .note {
-      margin-top: 6px;
-      color: #4f5560;
-      font-size: 0.98rem;
-      text-align: center;
-    }
-
-    .load-more-wrap {
-      margin-top: 14px;
-      display: flex;
+      gap: 14px;
       flex-wrap: wrap;
-      justify-content: center;
+      margin: 0 0 18px;
+    }
+
+    .pager.strong {
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: #ffffff;
+    }
+
+    .pager-meta {
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .pager-controls {
+      display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .load-more-btn {
-      border: none;
+    .pager-btn {
+      border: 1px solid var(--ink);
       background: #000000;
       color: #ffffff;
       border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 1rem;
-      font-weight: 700;
+      padding: 10px 17px;
       font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .load-more-btn:hover {
-      background: #000000;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    .pager-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .pager-label,
+    .pager-note {
+      color: var(--ink);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .pager-note {
+      width: 100%;
+      text-align: center;
+    }
+
+    .condition-wrap {
+      margin: 0 0 14px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .condition-card {
+      width: min(440px, 100%);
+    }
+
+    .condition-label {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .result-card {
+      border-top: 1px solid var(--line);
+      padding: 20px 0 24px;
+    }
+
+    .result-card h3 {
+      margin: 0 0 14px;
+      font-family: "Sora", "IBM Plex Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      align-items: start;
+    }
+
+    .media-cell {
+      min-width: 0;
+    }
+
+    .montage-video,
+    .still-image {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #ffffff;
+    }
+
+    .label-row {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 10px;
+    }
+
+    .label-row.bottom {
+      margin: 10px 0 0;
+    }
+
+    .label-cell {
+      color: var(--ink);
+      padding: 0 2px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.35;
+      text-align: center;
     }
 
     pre {
@@ -456,8 +531,17 @@
         width: 96vw;
       }
 
-      .video-list {
+      .media-grid {
         grid-template-columns: 1fr !important;
+      }
+
+      .pager {
+        align-items: stretch;
+      }
+
+      .pager-controls {
+        width: 100%;
+        justify-content: center;
       }
 
       .affiliation-grid {
@@ -559,10 +643,13 @@
       </div>
     </section>
 
-    <section>
+    <section id="results">
       <h2>Qualitative Results</h2>
-      <div class="qual-tabs" id="tabButtons"></div>
-      <div id="tabContent"></div>
+      <p class="results-note">
+        For all videos, the condition signal is frame 0 of the source video with transparent box overlays. The red box marks the object being moved, the green box marks where it will be placed after the edit, and yellow indicates overlap when the two boxes intersect.
+      </p>
+      <nav class="qual-tabs" id="tabBar" aria-label="Qualitative result categories"></nav>
+      <div class="tab-wrap" id="tabContent"></div>
     </section>
 
     <section id="bibtex">
@@ -598,315 +685,8 @@
   </main>
   <button id="upBtn" class="up-btn" type="button" aria-label="Scroll to top">Up</button>
 
+  <script src="results.js"></script>
   <script>
-    function pad3(num) {
-      return String(num).padStart(3, "0");
-    }
-
-    const originalMotions = [
-      "throw", "throw", "drop", "drag", "roll", "drag", "throw", "drop", "drop",
-      "drag", "drag", "drop", "placement static", "roll", "drop", "drag", "throw", "drag"
-    ];
-
-    const baselineMotions = [
-      "drop", "drop + drag", "drop + drag", "drop + drag", "throw", "drop + drag",
-      "throw", "drop + drag", "drop", "throw", "drop", "drop"
-    ];
-
-    const oursMotions = [
-      "drop", "drop", "drop + drag", "drop", "drop + drag", "placement static", "drop + drag",
-      "drop + drag", "placement static", "throw", "placement static", "drop", "drop + drag",
-      "drop", "placement static", "drop + drag", "drop + drag", "placement static", "drop",
-      "placement static", "placement static", "drop + drag", "drop"
-    ];
-
-    const ablationMotions = [
-      "drop", "drop", "drop + drag", "drop", "drop + drag", "throw", "drop + drag",
-      "drop", "drop + drag", "drop", "throw", "drop", "drop"
-    ];
-
-    const realBaselineCases = [
-      "motion trajectory: real world case 1",
-      "motion trajectory: real world case 2",
-      "motion trajectory: real world case 3",
-      "motion trajectory: real world case 4",
-      "motion trajectory: real world case 5",
-      "motion trajectory: real world case 6",
-      "motion trajectory: real world case 7",
-      "motion trajectory: real world case 8"
-    ];
-
-    const realAdditionalCases = [
-      "real world case 1",
-      "real world case 2",
-      "real world case 3",
-      "real world case 4",
-      "real world case 5"
-    ];
-
-    const originalItems = originalMotions.map((motion, idx) => {
-      const id = idx + 1;
-      return { id: pad3(id), file: pad3(id), motion };
-    });
-
-    const baselineItems = baselineMotions.map((motion, idx) => {
-      const id = idx + 1;
-      const fileId = idx + 2; // Skip baselines/001.mp4
-      return { id: pad3(id), file: pad3(fileId), motion };
-    });
-
-    const oursFiles = [
-      "001", "002", "003", "004", "005", "006", "007", "008", "009", "010", "011",
-      "012", "013", "014", "015", "016", "017", "018", "019", "020", "021", "022", "023"
-    ];
-
-    const oursItems = oursMotions.map((motion, idx) => {
-      return { id: pad3(idx + 1), file: oursFiles[idx], motion };
-    });
-
-    const ablationItems = ablationMotions.map((motion, idx) => {
-      const id = idx + 1;
-      return { id: pad3(id), file: pad3(id), motion };
-    });
-
-    const baselineRealItems = realBaselineCases.map((motion, idx) => {
-      const id = idx + 1;
-      return { id: pad3(id), file: pad3(id), motion };
-    });
-
-    const additionalRealItems = realAdditionalCases.map((motion, idx) => {
-      const id = idx + 1;
-      return { id: pad3(id), file: pad3(id), motion };
-    });
-
-    const tabs = {
-      original: {
-        label: "Original Data (Synthetic videos)",
-        title: "Original Data",
-        desc: "Ground truth source-target pairs and occluded segmentation channels.",
-        folder: "original",
-        panelCols: 4,
-        panelRows: [
-          ["Source RGB", "Target RGB", "Source Segmentation Mask (Occlusion aware)", "Target Segmentation Mask (Occlusion aware)"]
-        ],
-        items: originalItems
-      },
-      baselines: {
-        label: "Baselines (Synthetic videos)",
-        title: "Baselines",
-        desc: "Comparison against <a href=\"https://anytraj.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">ATI</a>, <a href=\"https://igl-hkust.github.io/das/\" target=\"_blank\" rel=\"noopener noreferrer\">DaS</a>, <a href=\"https://i2vedit.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">I2VEdit</a>, <a href=\"https://shapeformotion.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">SFM</a>, and <a href=\"https://ali-vilab.github.io/VACE-Page/\" target=\"_blank\" rel=\"noopener noreferrer\">VACE</a>.",
-        folder: "baselines",
-        panelCols: 4,
-        panelRows: [
-          ["GT source video", "ATI result", "DaS result", "I2VEdit result"],
-          ["SFM result", "VACE result", "TrajectoryMover (Ours)", ""]
-        ],
-        items: baselineItems
-      },
-      ours: {
-        label: "Additional Synthetic videos",
-        title: "Additional Our Results",
-        desc: "Additional TrajectoryMover results with input displacement control signal.",
-        folder: "ours",
-        panelCols: 3,
-        panelRows: [
-          ["Displacement control signal", "Source", "Generated"]
-        ],
-        items: oursItems
-      },
-      ablations: {
-        label: "Ablations",
-        title: "Ablations",
-        desc: "Ablation comparisons for only primitives, only scene modification, w/o scene modification, and Drop-only trajectory training.",
-        folder: "ablations",
-        panelCols: 3,
-        panelRows: [
-          ["GT source video", "TrajectoryMover (Ours)", "Drop-only"],
-          ["w/o scene mod.", "only scene mod.", "only primitives"]
-        ],
-        items: ablationItems
-      },
-      baselinesReal: {
-        label: "Baselines (Real Videos)",
-        title: "Baselines (Real Videos)",
-        desc: "Comparison against <a href=\"https://anytraj.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">ATI</a>, <a href=\"https://igl-hkust.github.io/das/\" target=\"_blank\" rel=\"noopener noreferrer\">DaS</a>, <a href=\"https://i2vedit.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">I2VEdit</a>, <a href=\"https://eyeline-labs.github.io/Go-with-the-Flow/\" target=\"_blank\" rel=\"noopener noreferrer\">GWTF</a>, <a href=\"https://ali-vilab.github.io/VACE-Page/\" target=\"_blank\" rel=\"noopener noreferrer\">VACE</a>, <a href=\"https://huggingface.co/Wan-AI/Wan2.1-T2V-1.3B\" target=\"_blank\" rel=\"noopener noreferrer\">WAN 2.1 T2V Prior</a>, and TrajectoryMover on real videos.",
-        folder: "baselines_real",
-        panelCols: 4,
-        panelRows: [
-          ["GT source video", "ATI result", "DaS result", "I2VEdit result"],
-          ["GWTF result", "VACE result", "WAN 2.1 T2V Prior result", "TrajectoryMover (Ours)"]
-        ],
-        items: baselineRealItems,
-        listCols: 1,
-        pageSize: 4
-      },
-      additionalReal: {
-        label: "Additional Real Videos",
-        title: "Additional Real Videos",
-        desc: "Additional real-world TrajectoryMover results with condition, source, and generated trajectories.",
-        folder: "ours_real",
-        panelCols: 3,
-        panelRows: [
-          ["Condition", "Source", "Generated"]
-        ],
-        items: additionalRealItems
-      }
-    };
-
-    const tabButtons = document.getElementById("tabButtons");
-    const tabContent = document.getElementById("tabContent");
-    const DEFAULT_VIDEOS_STEP = 4;
-
-    function renderButtons(activeKey) {
-      tabButtons.innerHTML = "";
-      Object.keys(tabs).forEach((key) => {
-        const btn = document.createElement("button");
-        btn.className = "tab-btn" + (key === activeKey ? " active" : "");
-        btn.type = "button";
-        btn.textContent = tabs[key].label;
-        btn.dataset.key = key;
-        tabButtons.appendChild(btn);
-      });
-    }
-
-    function buildPanelGrid(tab) {
-      const grid = document.createElement("div");
-      grid.className = "panel-grid cols-" + tab.panelCols;
-
-      tab.panelRows.forEach((row) => {
-        row.forEach((cellLabel) => {
-          const cell = document.createElement("div");
-          cell.className = "panel-cell";
-          if (!cellLabel || !cellLabel.trim()) {
-            cell.classList.add("empty");
-            cell.textContent = "-";
-          } else {
-            cell.textContent = cellLabel;
-          }
-          grid.appendChild(cell);
-        });
-      });
-
-      return grid;
-    }
-
-    function renderTab(activeKey, visibleCount = null) {
-      const tab = tabs[activeKey];
-      const pageSize = tab.pageSize || DEFAULT_VIDEOS_STEP;
-      const wrap = document.createElement("div");
-
-      const head = document.createElement("div");
-      head.className = "sub-head";
-      head.innerHTML = "<p>" + tab.desc + "</p>";
-      wrap.appendChild(head);
-
-      const list = document.createElement("div");
-      list.className = "video-list";
-      list.style.setProperty("--video-cols", String(tab.listCols || 1));
-
-      const totalItems = tab.items.length;
-      const requestedVisible = visibleCount == null ? pageSize : visibleCount;
-      const shownCount = Math.min(Math.max(requestedVisible, pageSize), totalItems);
-      const itemsToShow = tab.items.slice(0, shownCount);
-
-      itemsToShow.forEach((item) => {
-        const card = document.createElement("article");
-        card.className = "video-item";
-
-        const top = document.createElement("div");
-        top.className = "video-title";
-        top.textContent = "Motion trajectory: " + item.motion;
-        card.appendChild(top);
-
-        if (tab.panelRows.length > 1) {
-          const topGridTab = {
-            panelCols: tab.panelCols,
-            panelRows: [tab.panelRows[0]]
-          };
-          card.appendChild(buildPanelGrid(topGridTab));
-        }
-
-        const video = document.createElement("video");
-        video.controls = true;
-        video.preload = "metadata";
-        video.playsInline = true;
-        video.src = "assets/videos/" + tab.folder + "/" + item.file + ".mp4";
-        card.appendChild(video);
-
-        if (tab.panelRows.length > 1) {
-          const bottomGridTab = {
-            panelCols: tab.panelCols,
-            panelRows: [tab.panelRows[1]]
-          };
-          card.appendChild(buildPanelGrid(bottomGridTab));
-        } else {
-          card.appendChild(buildPanelGrid(tab));
-        }
-
-        if (item.note) {
-          const note = document.createElement("div");
-          note.className = "note";
-          note.textContent = "Note: " + item.note;
-          card.appendChild(note);
-        }
-
-        list.appendChild(card);
-      });
-
-      wrap.appendChild(list);
-
-      if (totalItems > pageSize) {
-        const controls = document.createElement("div");
-        controls.className = "load-more-wrap";
-
-        if (shownCount < totalItems) {
-          const showMoreButton = document.createElement("button");
-          showMoreButton.type = "button";
-          showMoreButton.className = "load-more-btn";
-          showMoreButton.textContent = "Show More";
-          showMoreButton.addEventListener("click", () => {
-            const nextCount = Math.min(shownCount + pageSize, totalItems);
-            renderTab(activeKey, nextCount);
-          });
-          controls.appendChild(showMoreButton);
-        }
-
-        if (shownCount > pageSize) {
-          const collapseButton = document.createElement("button");
-          collapseButton.type = "button";
-          collapseButton.className = "load-more-btn";
-          collapseButton.textContent = "Collapse";
-          collapseButton.addEventListener("click", () => {
-            renderTab(activeKey, pageSize);
-          });
-          controls.appendChild(collapseButton);
-        }
-
-        wrap.appendChild(controls);
-      }
-
-      tabContent.replaceChildren(wrap);
-    }
-
-    function activateTab(key) {
-      const selected = tabs[key] ? key : "original";
-      renderButtons(selected);
-      renderTab(selected, null);
-      const cleanUrl = window.location.pathname + window.location.search;
-      history.replaceState(null, "", selected === "original" ? cleanUrl : cleanUrl + "#" + selected);
-    }
-
-    tabButtons.addEventListener("click", (event) => {
-      const target = event.target.closest(".tab-btn");
-      if (!target) {
-        return;
-      }
-      activateTab(target.dataset.key);
-    });
-
-    const start = window.location.hash.replace("#", "");
-    activateTab(start || "original");
-
     const upBtn = document.getElementById("upBtn");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
