@@ -228,34 +228,30 @@
     head.className = "tab-head";
     const heading = document.createElement("h3");
     heading.textContent = tab.title;
-    const count = document.createElement("div");
-    count.className = "tab-count";
-    count.textContent = `${tab.items.length} total`;
-    head.append(heading, count);
+    head.appendChild(heading);
 
-    const pager = document.createElement("div");
-    pager.className = "pager strong";
-    pager.innerHTML = `
-      <div class="pager-meta">Showing ${start + 1}-${end} of ${tab.items.length} cases</div>
-      <div class="pager-controls">
+    let pager = null;
+    if (pageCount > 1) {
+      pager = document.createElement("div");
+      pager.className = "pager";
+      pager.innerHTML = `
         <button type="button" class="pager-btn" data-page="previous" ${pageIndex === 0 ? "disabled" : ""}>Previous</button>
         <div class="pager-label">Page ${pageIndex + 1} / ${pageCount}</div>
         <button type="button" class="pager-btn" data-page="next" ${pageIndex >= pageCount - 1 ? "disabled" : ""}>Next</button>
-      </div>
-      ${pageCount > 1 ? '<div class="pager-note">More pages available. Use Previous / Next.</div>' : ""}
-    `;
+      `;
+    }
 
     const cards = document.createElement("div");
     cards.className = "cards";
     tab.items.slice(start, end).forEach((item) => cards.appendChild(resultCard(item, tab)));
-    tabContent.replaceChildren(head, pager, cards);
+    tabContent.replaceChildren(...[head, pager, cards].filter(Boolean));
     loadMedia(cards);
 
-    pager.querySelector('[data-page="previous"]')?.addEventListener("click", () => {
+    pager?.querySelector('[data-page="previous"]')?.addEventListener("click", () => {
       pageState.set(tab.key, pageIndex - 1);
       renderTab(tab.key, false);
     });
-    pager.querySelector('[data-page="next"]')?.addEventListener("click", () => {
+    pager?.querySelector('[data-page="next"]')?.addEventListener("click", () => {
       pageState.set(tab.key, pageIndex + 1);
       renderTab(tab.key, false);
     });
@@ -277,7 +273,7 @@
     button.className = "tab-btn";
     button.dataset.key = tab.key;
     button.setAttribute("role", "tab");
-    button.innerHTML = `<span class="tab-btn-label">${tab.label}</span><span class="tab-btn-count">${tab.items.length}</span>`;
+    button.innerHTML = `<span class="tab-btn-label">${tab.label}</span>`;
     button.addEventListener("click", () => renderTab(tab.key));
     tabBar.appendChild(button);
   });
