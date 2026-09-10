@@ -546,17 +546,17 @@
       <h2>Abstract</h2>
       <div class="same-width-wrap">
         <p class="text abstract-text">
-          Generative video editing has enabled several intuitive editing operations for short video clips that would previously have been difficult to achieve, especially for non-expert editors. Existing methods focus on prescribing an object's 3D or 2D motion trajectory in a video, or on altering the appearance of an object or a scene, while preserving both the video's plausibility and identity. Yet a method to move an object's 3D motion trajectory in a video, i.e. moving an object while preserving its relative 3D motion, is currently still missing. The main challenge lies in obtaining paired video data for this scenario. Previous methods typically rely on clever data generation approaches to construct plausible paired data from unpaired videos, but this approach fails if one of the videos in a pair cannot easily be constructed from the other. Instead, we introduce TrajectoryAtlas, a new data generation pipeline for large-scale synthetic paired video data and a video generator TrajectoryMover fine-tuned with this data. We show that this successfully enables generative movement of object trajectories.
+          Generative video editing has enabled several intuitive editing operations for short video clips that would previously have been difficult to achieve, especially for non-expert editors. Existing methods focus on prescribing an object's 3D or 2D motion trajectory in a video, or on altering the appearance of an object or a scene, while preserving both the video's plausibility and identity. Yet a method to move an object's 3D motion trajectory in a video, i.e. moving an object while preserving its relative 3D motion, is currently still missing. The main challenge lies in obtaining paired video data for this scenario. Previous methods typically rely on clever data generation approaches to construct plausible paired data from unpaired videos, but this approach fails if one of the videos in a pair cannot easily be constructed from the other. Instead, we introduce TrajectorySynth, a new data generation pipeline for large-scale synthetic paired video data and a video generator TrajectoryMover fine-tuned with this data. We show that this successfully enables generative movement of object trajectories.
         </p>
       </div>
     </section>
 
     <section>
-      <h2>TrajectoryAtlas Data Generation Pipeline</h2>
+      <h2>TrajectorySynth Data Generation Pipeline</h2>
       <div class="atlas-wrap">
-        <img class="figure-image" src="assets/figures/data_pipe.png" alt="TrajectoryAtlas data generation pipeline">
+        <img class="figure-image" src="assets/figures/data_pipe.png" alt="TrajectorySynth data generation pipeline">
         <p class="text">
-          <strong>TrajectoryAtlas data generation pipeline.</strong>
+          <strong>TrajectorySynth data generation pipeline.</strong>
           The pipeline has five stages, Asset Cache Preparation, Preflight Validation, Collision Aware Sampling and Scaling, Task Simulation, and Canonical Rendering with Runtime Metadata.
           Inputs including camera, 3D scene, lights and materials, and Objaverse or primitive assets are converted to reusable collision caches, then skip render preflight selects valid frames.
           Paired A/B placements with shared scale are filtered by visibility, support normal, and penetration clearance, and optional no hit processing removes only non structural obstacles in the trajectory corridor.

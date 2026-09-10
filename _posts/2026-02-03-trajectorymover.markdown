@@ -13,4 +13,4 @@ arxiv: https://arxiv.org/abs/2603.29092
 website: https://chhatrekiran.github.io/trajectorymover/
 code: https://github.com/kiranchhatre/TrajectoryMover
 ---
-A scene-aware video editing method that moves an object to a new starting position while generating a plausible new trajectory and preserving the surrounding scene.
+A scene-aware video editing method that moves an object to a new starting position while generating a plausible new trajectory and preserving the surrounding scene. Code will be released for research purposes.
