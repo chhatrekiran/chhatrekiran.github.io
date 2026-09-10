@@ -96,6 +96,10 @@
       border: 1px solid #000000;
     }
 
+    .github-code-btn {
+      position: relative;
+    }
+
     .hero-link-content {
       display: inline-flex;
       align-items: center;
@@ -105,6 +109,10 @@
     .hero-status-badge {
       display: inline-flex;
       align-items: center;
+      position: absolute;
+      top: -13px;
+      right: -18px;
+      z-index: 2;
       background: #fff2bf;
       color: #5e4200;
       border: 1px solid #e2bd4f;
@@ -115,6 +123,7 @@
       line-height: 1;
       letter-spacing: 0;
       text-transform: uppercase;
+      pointer-events: none;
       animation: status-flicker 1.35s infinite;
       box-shadow: 0 0 0 2px rgba(255, 242, 191, 0.85);
     }
@@ -122,15 +131,15 @@
     @keyframes status-flicker {
       0%, 100% {
         opacity: 1;
-        transform: scale(1);
+        transform: rotate(10deg) scale(1);
       }
       45% {
         opacity: 0.35;
-        transform: scale(0.96);
+        transform: rotate(10deg) scale(0.96);
       }
       55% {
         opacity: 1;
-        transform: scale(1.06);
+        transform: rotate(10deg) scale(1.06);
       }
     }
 
@@ -549,10 +558,10 @@
         <a class="hero-link-btn" href="https://arxiv.org/abs/2603.29092" target="_blank" rel="noopener noreferrer">
           <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/arxiv/ffffff" alt="">arxiv</span>
         </a>
-        <a class="hero-link-btn" href="https://github.com/kiranchhatre/TrajectoryMover" target="_blank" rel="noopener noreferrer">
+        <a class="hero-link-btn github-code-btn" href="https://github.com/kiranchhatre/TrajectoryMover" target="_blank" rel="noopener noreferrer">
           <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/github/ffffff" alt="">github</span>
+          <span class="hero-status-badge">coming soon</span>
         </a>
-        <span class="hero-status-badge">coming soon</span>
         <a class="hero-link-btn" href="#bibtex">
           <span class="hero-link-content">bibtex</span>
         </a>
