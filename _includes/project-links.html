@@ -26,7 +26,7 @@
 <a href="{{include.post.supp}}">supp. material</a> /
 {% endif %}
 {% if include.post.code %}
-<a href="{{include.post.code}}">code</a> /
+<a href="{{include.post.code}}">code</a>{% if include.post.code_status %}<span class="code-status-tag">{{ include.post.code_status }}</span>{% endif %} /
 {% endif %}
 {% if include.post.code2 %}
 <a href="{{include.post.code2}}">BEAM-integration</a> /
