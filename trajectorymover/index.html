@@ -115,6 +115,29 @@
       line-height: 1;
       letter-spacing: 0;
       text-transform: uppercase;
+      animation: status-flicker 1.35s infinite;
+      box-shadow: 0 0 0 2px rgba(255, 242, 191, 0.85);
+    }
+
+    @keyframes status-flicker {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      45% {
+        opacity: 0.35;
+        transform: scale(0.96);
+      }
+      55% {
+        opacity: 1;
+        transform: scale(1.06);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-status-badge {
+        animation: none;
+      }
     }
 
     .hero-link-icon {
@@ -527,8 +550,9 @@
           <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/arxiv/ffffff" alt="">arxiv</span>
         </a>
         <a class="hero-link-btn" href="https://github.com/kiranchhatre/TrajectoryMover" target="_blank" rel="noopener noreferrer">
-          <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/github/ffffff" alt="">github <span class="hero-status-badge">coming soon</span></span>
+          <span class="hero-link-content"><img class="hero-link-icon" src="https://cdn.simpleicons.org/github/ffffff" alt="">github</span>
         </a>
+        <span class="hero-status-badge">coming soon</span>
         <a class="hero-link-btn" href="#bibtex">
           <span class="hero-link-content">bibtex</span>
         </a>

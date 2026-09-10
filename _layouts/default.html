@@ -159,6 +159,29 @@
       text-transform: uppercase;
       vertical-align: middle;
       white-space: nowrap;
+      animation: status-flicker 1.35s infinite;
+      box-shadow: 0 0 0 1px rgba(255, 242, 191, 0.8);
+    }
+
+    @keyframes status-flicker {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      45% {
+        opacity: 0.45;
+        transform: scale(0.96);
+      }
+      55% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .code-status-tag {
+        animation: none;
+      }
     }
     
     .logo-container {
